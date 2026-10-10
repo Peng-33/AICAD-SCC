@@ -38,7 +38,13 @@ email, private-key, and key-id markers.
 ## Not done
 
 - No scan of the private 134-commit history. That history is not in this snapshot. Publishing the backup repository would be a different and rejected action.
-- No OCR of every PNG. The README uses one reviewed frame.
+- `gitleaks` is not installed. No scan result was uploaded.
+- All 20 tracked PNG files were opened and read as images on 2026-10-10.
+  They show the Engineering Workbench, drawings, and fixture text. No
+  personal path, mailbox, or filled credential is visible. Some older frames
+  still show `scc 0.3.0` or a historical three-view error. Those frames are
+  not a claim that the current UI build string is 0.3.0. Green parameter
+  ids such as `parameter:fp_…` are internal feature ids.
 - `cargo-audit` was not run. The Rust advisory database was not installed. `npm audit` during `npm ci` reported 0 vulnerabilities for the UI lockfile (the UI package and `three`).
 - CadQuery 2.8.0 and cadquery-ocp 7.9.3.1.1 license files and the wheel SBOM were opened after this note was first written. The result is in `THIRD_PARTY_NOTICES.md`. The wheel does not contain an OCCT license text. That blocks image redistribution. It does not block publishing AICAD source, which does not vendor those binaries.
 - A pre-commit scan of 557 text files found no private-key block, AWS-style key id, GitHub token prefix, Slack token prefix, long `sk-` token, host home-directory prefix, or personal mailbox marker.

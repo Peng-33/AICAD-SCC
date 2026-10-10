@@ -35,7 +35,10 @@ SCHEMA_VERSION = 6
 TOLERANCE = 1e-7
 SPATIAL_CURVE_MAX_DEVIATION_MM = 0.05
 MAX_SPATIAL_CURVE_SAMPLE_POINTS = 512
-MAX_SPATIAL_BSPLINE_FACE_SAMPLE_POINTS = 4096
+# A 0.25 mm fillet on a radius-2 circular rim, sampled at the existing
+# 0.05 mm / 0.1 rad deviation, measured 4790 vertices on a 4.71 mm² face.
+# The deviation is unchanged. This cap only rejects unbounded meshes.
+MAX_SPATIAL_BSPLINE_FACE_SAMPLE_POINTS = 8192
 HLR_CURVE_MAX_DEVIATION_MM = 0.01
 VIEWS = {
     "front": ((0.0, 0.0, 1.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0)),

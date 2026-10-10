@@ -1556,10 +1556,12 @@ fn valid_spatial_face_surface(surface: &SpatialFaceSurface) -> bool {
             angular_tolerance_radians,
         } => {
             vertices.len() >= 3
-                && vertices.len() <= 4096
+                && vertices.len() <= 8192
                 && vertices.iter().all(|point| finite(point))
                 && *triangle_count > 0
-                && *triangle_count <= 8192
+                // The same 0.25 mm rim fillet measured 9313 triangles.
+                // Linear deviation stays <= 0.05 mm and angular tolerance <= 0.1 rad.
+                && *triangle_count <= 16384
                 && linear_deviation_mm.is_finite()
                 && *linear_deviation_mm > 0.0
                 && *linear_deviation_mm <= 0.05

@@ -83,8 +83,8 @@ Perpendicular, ArrayRelation, and InstanceOf.
 v2 Sweep is fixed-binormal, open, planar, and C1 (`ADR-075`). v2 Loft is
 ruled, aligned, and parallel (`ADR-076`). G7C adds selectors for sweep and
 loft caps and lateral faces. Those tests stay skipped unless
-`AICAD_RUST_PARAMETRIC_INTEGRATION=1`. On this snapshot the gated Loft case
-passed and the gated Sweep case failed closed. The set is not accepted.
+`AICAD_RUST_PARAMETRIC_INTEGRATION=1`. On this snapshot the gated Sweep and
+Loft cases passed inside the bounds in [../limitations/current.md](../limitations/current.md).
 
 ## Where to read next
 

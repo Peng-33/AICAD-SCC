@@ -948,6 +948,9 @@ function makeSweepGeneratedTopologyHistory() {
   hole.support = { kind: "generated_face", reference: generatedFaceReference("curved_sweep", { kind: "sweep_end_cap" }) };
   hole.position = point([0, 0]);
   hole.reversed = true;
+  // The swept section is a radius-2 circle. Diameter 4 is the cap boundary, so a
+  // through hole of that size removes the rim. An interior hole must leave it.
+  hole.diameter = 2;
   builder.addFeature("sweep_end_rim_fillet", {
     type: "fillet", radius: 0.25,
     edge_refs: [{
@@ -1308,7 +1311,13 @@ test("G7C Sweep cap and lateral roles survive Hole, Fillet, edit, Drawing and ca
   const failed = invoke(stale);
   assert.notEqual(failed.status, 0, "missing generated source identity must fail closed");
   assert.match(`${failed.stderr}\n${failed.stdout}`, /TOPOLOGY_REFERENCE_NOT_FOUND|UNSUPPORTED_TOPOLOGY_REFERENCE/);
-  t.diagnostic(`G7C_SWEEP_DRAWING_AND_STEP=PASS;SOURCE_EDGE_FILLET=PASS;PATH_EDIT_REBIND=PASS;STALE_REFERENCE_FAIL_CLOSED=PASS`);
+
+  const consumed = structuredClone(fixture.model);
+  consumed.features.clearance_hole.feature.diameter = 4;
+  const consumedResult = invoke(consumed);
+  assert.notEqual(consumedResult.status, 0, "a hole that consumes the sweep end rim must fail closed");
+  assert.match(`${consumedResult.stderr}\n${consumedResult.stdout}`, /TOPOLOGY_REFERENCE_STALE/);
+  t.diagnostic(`G7C_SWEEP_DRAWING_AND_STEP=PASS;SOURCE_EDGE_FILLET=PASS;PATH_EDIT_REBIND=PASS;STALE_REFERENCE_FAIL_CLOSED=PASS;RIM_CONSUMING_HOLE_FAIL_CLOSED=PASS`);
 });
 
 test("G7C Loft adjacent section roles survive Hole, Chamfer, edit, Drawing and canonical STEP", { skip: !enabled }, (t) => {

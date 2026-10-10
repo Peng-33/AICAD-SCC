@@ -2,14 +2,14 @@
 
 ## [0.4.0-alpha.1] - 2026-10-10
 
-Public-prep snapshot taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. This entry does not record a public release. Local evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. G7C is not accepted as a set: the gated Loft case passed on this tree, and the gated Sweep fillet still fails closed.
+Public-prep snapshot taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. This entry does not record a public release. Local evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. The gated G7C Sweep and Loft cases pass inside their narrow domains. A sweep hole that consumes the end rim still fails closed.
 
 ### Changed
 
 - Aligned the 18 Rust crates, `Cargo.lock` path packages, `@scc/ui`, the e2e package, the production image tag, and `scripts/smoke-test.py` on `0.4.0-alpha.1`.
 - Set crate and package license fields to the intended Apache-2.0 identifier. The copyright holder is not named. See `NOTICE`.
 - Replaced the root README with an English document and added `README.zh-CN.md`.
-- Corrected the Workbench README: bounded Revolve, fixed-binormal Sweep, ruled aligned Loft, and formal v2 STEP exist in source. They are not unrestricted, and G7C is not accepted by this entry.
+- Corrected the Workbench README: bounded Revolve, fixed-binormal Sweep, ruled aligned Loft, and formal v2 STEP exist in source. The gated G7C Sweep and Loft cases pass inside that narrow domain. A sweep hole the same diameter as the tube end fails closed. This is not a selector for every generated face.
 - Completed the ADR index through ADR-076 without rewriting historical ADR bodies.
 - Removed internal agent notes from this snapshot. The private backup repository was not modified.
 - Formal Section A-A on a non-parametric model now fails closed as `SCC-DRW-024`, with `details.parametric_code` `SECTION_PARAMETRIC_REBUILD_REQUIRED`. A missing OCP section is `SCC-DRW-025` / `SECTION_GEOMETRY_MISSING`. The previous raw semantic codes violated the CLI error contract and were rewritten as `SCC-CLI-009`.

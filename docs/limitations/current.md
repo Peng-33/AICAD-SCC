@@ -20,9 +20,11 @@ G7C selectors for sweep and loft caps and lateral faces are in
 `crates/scc-engineering` and in `apps/scc-ui/test/rust-parametric.integration.test.mjs`.
 On this snapshot those tests were run with
 `AICAD_RUST_PARAMETRIC_INTEGRATION=1`. The Loft case passed, including formal
-STEP re-import. The Sweep case failed closed with `TOPOLOGY_REFERENCE_STALE`
-after a hole of the same diameter as the tube end removed the referenced full
-rim. That failure is not accepted, and the selector set is not accepted.
+STEP re-import. The Sweep case passed for an interior hole and a 0.25 mm rim
+fillet. A hole the same diameter as the tube end still fails closed with
+`TOPOLOGY_REFERENCE_STALE`. The fillet surface is a sampled B-spline. Its
+0.05 mm linear deviation and 0.1 rad angular tolerance are unchanged. The
+sample budget now admits the measured 4790 vertices and 9313 triangles.
 Skipped is not accepted. The six CAD skills describe that selector contract
 so a planner does not invent topology ids. Skill text is not a test pass.
 See [../release/TEST_REPORT.md](../release/TEST_REPORT.md).

@@ -6,7 +6,7 @@ public-facing order of work. Nothing here is a commitment date.
 ## In progress
 
 - Keep one EngineeringModel and one formal STEP checker while the v2 feature set stays bounded.
-- Leave G7C Sweep experimental. The gated Loft case passed; the Sweep fillet still fails closed.
+- Keep G7C inside the gated Sweep and Loft cases. A rim-consuming sweep hole stays fail-closed.
 - Make the public docs, the Workbench README, and the feature table describe the same bounds.
 
 ## Planned
