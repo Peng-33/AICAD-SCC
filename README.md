@@ -93,7 +93,7 @@ Status values mean:
 - **Limited / Experimental** — the source implements a bounded behavior. Either the domain is intentionally narrow, or this snapshot has not re-run the proving test.
 - **Not yet supported** — the operation is rejected or is absent.
 
-A bounded case can pass and the capability still stay **Limited / Experimental**, because the domain is intentionally narrow. [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) is the evidence for this snapshot. A missing row there is not a pass. G7C failed on this tree.
+A bounded case can pass and the capability still stay **Limited / Experimental**, because the domain is intentionally narrow. [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) is the evidence for this snapshot. A missing row there is not a pass. G7C is not accepted as a set: the gated Loft case passed on this tree, and the gated Sweep case did not.
 
 | Capability | Status | Bound in this tree |
 | --- | --- | --- |
@@ -102,14 +102,14 @@ A bounded case can pass and the capability still stay **Limited / Experimental**
 | Revolve | Limited / Experimental | Full or partial ADD/CUT about a principal or two-point datum axis. |
 | Hole / Pattern | Limited / Experimental | Through and blind holes, countersink in the G6B set, linear / circular / corner / explicit placement patterns inside their validators. |
 | Fillet / Chamfer | Limited / Experimental | Constant-radius fillet and equal-distance chamfer on edges the semantic resolver can name uniquely. No variable-radius fillet and no distance-angle chamfer. |
-| Sweep | Limited / Experimental | Open planar Line/Arc path, C1 joins, fixed binormal, constant section, ADD/CUT, one solid. No closed, sharp-corner, variable-section, twisted, or Frenet sweep. The bounded G7A case passed on this tree. G7C did not. |
-| Loft | Limited / Experimental | Two to 32 sketches, one outer loop each, parallel co-oriented planes, monotonic offset, ruled and aligned, matching curve order. No smooth loft, inner loops, or non-parallel sections. The bounded G7B case passed on this tree. G7C did not. |
+| Sweep | Limited / Experimental | Open planar Line/Arc path, C1 joins, fixed binormal, constant section, ADD/CUT, one solid. No closed, sharp-corner, variable-section, twisted, or Frenet sweep. The bounded G7A case passed on this tree. The G7C generated-edge fillet did not. |
+| Loft | Limited / Experimental | Two to 32 sketches, one outer loop each, parallel co-oriented planes, monotonic offset, ruled and aligned, matching curve order. No smooth loft, inner loops, or non-parallel sections. The bounded G7B case passed on this tree. The gated G7C adjacent-section chamfer also passed. The domain stays this narrow. |
 | Orthographic drawing | Limited / Experimental | Front, Top, and Left from the projection and visibility models. First or third angle is sheet placement. |
 | Section drawing | Limited / Experimental | Principal-plane Section A-A after an EngineeringModel v2 rebuild. G6A passed on this tree. A v1 model, including the mounting plate, fails closed as `SCC-DRW-024` (`SECTION_PARAMETRIC_REBUILD_REQUIRED`) and does not invent a section. Not an arbitrary section tool. |
 | STEP export | Limited / Experimental | Formal route only, after re-import and equivalence. v1 profile coverage is the closed manufacturing set. v2 uses the same checker. |
-| Engineering Workbench | Limited / Experimental | One Chinese-first UI at `/engineering.html`, with an English toggle. Open, save, fixture load, three-view, and formal STEP actions exist in the client. |
+| Engineering Workbench | Limited / Experimental | One Chinese-first UI at `/engineering.html`, with an English toggle. Playwright on this tree passed G3, G4, G5, G6B, G7A, and G7B against that page with the fake provider. G6A.2 and G6A.3 failed. `browser-g6a.mjs` was not run. This is not a DeepSeek test. |
 | Natural language | Limited / Experimental | Optional. New designs must come back as DSL. Edits must come back as typed tools. Real DeepSeek and Qwen calls are not an acceptance of this snapshot. |
-| G7C generated-face selectors | Limited / Experimental | Not accepted. With `AICAD_RUST_PARAMETRIC_INTEGRATION=1`, both tests ran on this tree and failed: Sweep lateral topology was not found, and the Loft front dimension span disagreed with the spatial span by about 0.00047 mm. |
+| G7C generated-face selectors | Limited / Experimental | Not accepted as a set. The gated Loft test passed: adjacent-section chamfer, drawing, formal STEP re-import, section edit, and a missing section identity fails closed. The gated Sweep test failed with `TOPOLOGY_REFERENCE_STALE`: the fixture hole has the same diameter as the tube end, the full rim is no longer that curve, and the fillet is not applied to the remaining semicircle (ADR-067). |
 | Assemblies, multi-body, full NURBS | Not yet supported | Rejected or out of model. |
 | Full GD&T / PMI, title blocks, standard frames | Not yet supported | Dimensional tolerances exist in a bounded form. Frames and PMI do not. |
 | Threads, shells, general freeform | Not yet supported | No thread feature and no general shell. |
@@ -126,7 +126,7 @@ Details and the same commands: [docs/getting-started/quickstart.md](docs/getting
 
 ### A. Docker
 
-The image build pulls `rust:1.96.0-bookworm`, `python:3.12.11-slim-bookworm`, and `node:24.18.1-bookworm-slim`, then installs CadQuery. The final process runs as `node`. The production image tag is `aicad-scc-ui:0.4.0-alpha.1`. This host could not pull the Rust base image, so the Docker path below is the file contract, not a run that passed here.
+The image build pulls `rust:1.96.0-bookworm`, `python:3.12.11-slim-bookworm`, and `node:24.18.1-bookworm-slim`, then installs CadQuery. The final process runs as `node`. The production image tag is `aicad-scc-ui:0.4.0-alpha.1`. `docker compose build ui` on this host failed: the daemon's TLS handshake to `registry-1.docker.io` timed out. The image was not built and was not pushed. The commands below are the file contract.
 
 ```bash
 docker compose up --build ui
@@ -197,7 +197,7 @@ Parameters and feature history are the editable record. A STEP file is a checked
 - No complete GD&T or PMI, and no title block or GB/ISO/ASME sheet frame.
 - Not an arbitrary complex-part generator. If a selector is ambiguous, the call fails.
 - Sweep and Loft exist only inside the domains in the feature table.
-- G7C selectors failed their gated tests on this snapshot. They are not an accepted capability.
+- G7C is not an accepted capability. The gated Loft case passed. The gated Sweep fillet still fails closed, and that failure is not treated as a pass.
 - Commercial LLM providers are optional and were not accepted on this snapshot. A configured key can spend quota; a successful chat completion is not a valid solid.
 - Import of third-party CAD files, including FreeCAD documents, is not verified here.
 - The name AICAD collides with unrelated products. This snapshot is not a trademark clearance.
@@ -210,7 +210,7 @@ These are directions, not dates. Historical phase numbers live in `docs/adr/` an
 | Direction | Now | Next | Later |
 | --- | --- | --- | --- |
 | Parametric modeling | Bounded extrude, revolve, hole, pattern, fillet, chamfer, sweep, loft | Widen sweep and loft only with new fail-closed tests | Shells, threads, multi-body |
-| Semantic topology | Stable references where resolution is unique | Accept or reject G7C on this line of development with a real run | Selectors for every generated face |
+| Semantic topology | Stable references where resolution is unique. G7C Loft passed one gated case. G7C Sweep still fails closed | Keep the Sweep rim reference exact, or leave that selector experimental | Selectors for every generated face |
 | Drawings | Three views, principal sections, a subset of associative dimensions | The dimension kinds the ADRs still mark partial | Title blocks, standard frames, PMI |
 | CAD interchange | Validated STEP out | Confirm foreign STEP and other kernels one format at a time | Trusted round-trip editing |
 | LLM intent | DSL and typed tools, provider-neutral | Acceptance tests against specific providers, reported separately | Nothing that lets a model emit kernel script |

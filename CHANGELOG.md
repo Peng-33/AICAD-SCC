@@ -2,7 +2,7 @@
 
 ## [0.4.0-alpha.1] - 2026-10-10
 
-Public-prep snapshot taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. This entry does not record a public release. Local evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. G7C failed on this tree.
+Public-prep snapshot taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. This entry does not record a public release. Local evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. G7C is not accepted as a set: the gated Loft case passed on this tree, and the gated Sweep fillet still fails closed.
 
 ### Changed
 

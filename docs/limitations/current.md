@@ -19,10 +19,13 @@ also not "fully supported".
 G7C selectors for sweep and loft caps and lateral faces are in
 `crates/scc-engineering` and in `apps/scc-ui/test/rust-parametric.integration.test.mjs`.
 On this snapshot those tests were run with
-`AICAD_RUST_PARAMETRIC_INTEGRATION=1`. Both failed. Skipped is not accepted,
-and this failure is not accepted either. The six CAD skills describe that
-selector contract so a planner does not invent topology ids. Skill text is
-not a test pass. See [../release/TEST_REPORT.md](../release/TEST_REPORT.md).
+`AICAD_RUST_PARAMETRIC_INTEGRATION=1`. The Loft case passed, including formal
+STEP re-import. The Sweep case failed closed with `TOPOLOGY_REFERENCE_STALE`
+after a hole of the same diameter as the tube end removed the referenced full
+rim. That failure is not accepted, and the selector set is not accepted.
+Skipped is not accepted. The six CAD skills describe that selector contract
+so a planner does not invent topology ids. Skill text is not a test pass.
+See [../release/TEST_REPORT.md](../release/TEST_REPORT.md).
 
 ## Not in the product
 

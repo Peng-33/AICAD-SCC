@@ -1727,6 +1727,45 @@ def _common_faces(first: list[cq.Face], second: list[cq.Face]) -> list[cq.Face]:
     return [face for face in first if any(face.isSame(other) for other in second)]
 
 
+def _circle_arcs_on_curve(shape: cq.Shape, expected: cq.Edge, tolerance: float) -> list[cq.Edge]:
+    """Edges that lie on a circle even when a boolean kept only part of it.
+
+    A full-length match is handled by `_edges_on_shape`. This fallback is only
+    for the remaining arc: same center, radius, and axis, shorter length.
+    """
+    adaptor = BRepAdaptor_Curve(expected.wrapped)
+    if adaptor.GetType() != GeomAbs_Circle:
+        return []
+    circle = adaptor.Circle()
+    center = _point(circle.Location())
+    radius = float(circle.Radius())
+    axis = _point(circle.Axis().Direction())
+    matches = []
+    for edge in shape.Edges():
+        current = BRepAdaptor_Curve(edge.wrapped)
+        if current.GetType() != GeomAbs_Circle:
+            continue
+        other = current.Circle()
+        if abs(float(other.Radius()) - radius) > tolerance:
+            continue
+        if _distance3(_point(other.Location()), center) > tolerance:
+            continue
+        other_axis = _point(other.Axis().Direction())
+        if _distance3(other_axis, axis) > 1e-7 and _distance3(other_axis, tuple(-value for value in axis)) > 1e-7:
+            continue
+        matches.append(edge)
+    return matches
+
+
+def _incident_faces(shape: cq.Shape, edges: list[cq.Edge]) -> list[cq.Face]:
+    faces: list[cq.Face] = []
+    for edge in edges:
+        for face in _adjacent_faces(shape, edge):
+            if not any(face.isSame(existing) for existing in faces):
+                faces.append(face)
+    return faces
+
+
 def _unique_sweep_lateral_face(shape: cq.Shape, reference: dict[str, Any], operation: dict[str, Any], feature_id: str) -> cq.Face:
     entity_id = reference["selector"]["profile_entity_id"]
     curves = []
@@ -1739,13 +1778,19 @@ def _unique_sweep_lateral_face(shape: cq.Shape, reference: dict[str, Any], opera
     tolerance = reference["qualifier"]["tolerance_mm"]
     start_frame = _sweep_profile_frame(operation, "start")
     end_frame = _sweep_profile_frame(operation, "end")
-    start_edges = _edges_on_shape(shape, _edge_from_profile_curve(curves[0], start_frame, feature_id), tolerance)
-    end_edges = _edges_on_shape(shape, _edge_from_profile_curve(curves[0], end_frame, feature_id), tolerance)
-    if len(start_edges) > 1 or len(end_edges) > 1:
+    start_expected = _edge_from_profile_curve(curves[0], start_frame, feature_id)
+    end_expected = _edge_from_profile_curve(curves[0], end_frame, feature_id)
+    start_exact = _edges_on_shape(shape, start_expected, tolerance)
+    end_exact = _edges_on_shape(shape, end_expected, tolerance)
+    if len(start_exact) > 1 or len(end_exact) > 1:
         raise RebuildError("AMBIGUOUS_TOPOLOGY_REFERENCE", "Sweep profile boundary entity matches multiple cap edges", feature_id)
+    # Fuse can delete part of the start circle and leave the arc that is still
+    # on the boundary. That arc is the same profile entity, not a new one.
+    start_edges = start_exact or _circle_arcs_on_curve(shape, start_expected, tolerance)
+    end_edges = end_exact or _circle_arcs_on_curve(shape, end_expected, tolerance)
     if not start_edges or not end_edges:
         raise RebuildError("TOPOLOGY_REFERENCE_NOT_FOUND", "Sweep lateral face boundary no longer exists", feature_id)
-    candidates = _common_faces(_adjacent_faces(shape, start_edges[0]), _adjacent_faces(shape, end_edges[0]))
+    candidates = _common_faces(_incident_faces(shape, start_edges), _incident_faces(shape, end_edges))
     candidates = [face for face in candidates if _face_matches_generated_qualifier(face, reference["qualifier"], "sweep_lateral")]
     if len(candidates) > 1:
         raise RebuildError("AMBIGUOUS_TOPOLOGY_REFERENCE", "Sweep lateral role matches multiple faces", feature_id)
@@ -2574,6 +2619,69 @@ def _projected_circle_geometries(
     return _tessellate_projected_curve(edge, right, up, tolerance), tolerance
 
 
+def _projected_extremum_fractions(
+    edge: cq.Edge,
+    right: tuple[float, ...],
+    up: tuple[float, ...],
+    *,
+    already_projected: bool,
+) -> list[float]:
+    """Parameters where a projected curve reaches a local axis extreme.
+
+    A chord inside the deviation tolerance can still miss the extreme by more
+    than the 1e-5 mm overall-dimension contract. The extreme itself has to be
+    a polyline vertex. The chord tolerance is unchanged.
+    """
+    sample_count = 64
+
+    def point_at(fraction: float) -> tuple[float, float]:
+        return _project_point(
+            _point(edge.positionAt(fraction)), right, up, already_projected=already_projected
+        )
+
+    samples = [point_at(index / sample_count) for index in range(sample_count + 1)]
+
+    def coordinate(fraction: float, axis: int) -> float:
+        return point_at(min(1.0, max(0.0, fraction)))[axis]
+
+    def refine(left: float, right_fraction: float, axis: int, find_max: bool) -> float:
+        golden = (math.sqrt(5.0) - 1.0) / 2.0
+        low, high = left, right_fraction
+
+        def score(fraction: float) -> float:
+            value = coordinate(fraction, axis)
+            return -value if find_max else value
+
+        left_probe = high - golden * (high - low)
+        right_probe = low + golden * (high - low)
+        left_score, right_score = score(left_probe), score(right_probe)
+        for _ in range(60):
+            if high - low <= 1.0e-12:
+                break
+            if left_score < right_score:
+                high, right_probe, right_score = right_probe, left_probe, left_score
+                left_probe = high - golden * (high - low)
+                left_score = score(left_probe)
+            else:
+                low, left_probe, left_score = left_probe, right_probe, right_score
+                right_probe = low + golden * (high - low)
+                right_score = score(right_probe)
+        return (low + high) / 2.0
+
+    fractions: list[float] = []
+    for axis in (0, 1):
+        for index in range(1, sample_count):
+            before = samples[index][axis] - samples[index - 1][axis]
+            after = samples[index + 1][axis] - samples[index][axis]
+            if (before > 0.0 and after > 0.0) or (before < 0.0 and after < 0.0):
+                continue
+            if before == 0.0 and after == 0.0:
+                fractions.append(index / sample_count)
+                continue
+            fractions.append(refine((index - 1) / sample_count, (index + 1) / sample_count, axis, before > 0.0))
+    return fractions
+
+
 def _tessellate_projected_curve(
     edge: cq.Edge,
     right: tuple[float, ...],
@@ -2589,7 +2697,14 @@ def _tessellate_projected_curve(
             _point(edge.positionAt(fraction)), right, up, already_projected=already_projected
         )
 
-    points = [point_at(index / 8.0) for index in range(9)]
+    fractions = [index / 8.0 for index in range(9)]
+    fractions.extend(_projected_extremum_fractions(edge, right, up, already_projected=already_projected))
+    fractions.sort()
+    deduped = [fractions[0]]
+    for fraction in fractions[1:]:
+        if fraction - deduped[-1] > 1.0e-12:
+            deduped.append(min(1.0, fraction))
+    points = [point_at(fraction) for fraction in deduped]
     output = [points[0]]
 
     def refine(t0: float, p0: tuple[float, float], t1: float, p1: tuple[float, float], depth: int) -> None:
@@ -2605,8 +2720,8 @@ def _tessellate_projected_curve(
         refine(t0, p0, midpoint_t, midpoint, depth + 1)
         refine(midpoint_t, midpoint, t1, p1, depth + 1)
 
-    for index in range(8):
-        refine(index / 8.0, points[index], (index + 1) / 8.0, points[index + 1], 0)
+    for index in range(len(deduped) - 1):
+        refine(deduped[index], points[index], deduped[index + 1], points[index + 1], 0)
     geometries = []
     for start, end in zip(output, output[1:]):
         if _distance2(start, end) > TOLERANCE:

@@ -77,7 +77,7 @@ try {
   assert.match(initial.dimension.formatted, /↧6/);
   const initialVolume = initialDrawing.spatial_summary.parametric.volume_mm3;
 
-  await page.locator(".wb-tree-item").filter({ hasText: /^center_hole hole$/ }).click();
+  await page.locator(".wb-tree-item").filter({ hasText: /^center_hole 孔$/ }).click();
   assert.match(await page.locator(".wb-selected-feature").innerText(), /center_hole.*孔/);
   assert.equal(await page.locator(".wb-prop-input").count(), 2);
   assert.deepEqual(await page.locator(".wb-prop-label").allTextContents(), ["直径", "盲孔深度"]);

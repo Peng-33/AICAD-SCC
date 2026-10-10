@@ -49,7 +49,7 @@ try {
   assert.match(dimensionFor(initialDrawing, initialAssociation.drawing_dimension_id).formatted, /Ø10/);
   assert.match(dimensionFor(initialDrawing, initialAssociation.drawing_dimension_id).formatted, /↧6/);
 
-  await page.locator(".wb-tree-item").filter({ hasText: /^center_hole hole$/ }).click();
+  await page.locator(".wb-tree-item").filter({ hasText: /^center_hole 孔$/ }).click();
   const diameterInput = page.locator(".wb-prop-input");
   assert.equal(await diameterInput.count(), 0, "this unbound Project v2 Hole exposes no editable parameter slot in the current Workbench");
   await page.locator(".wb-drawing-img").waitFor();

@@ -1304,7 +1304,7 @@ test("G7C Sweep cap and lateral roles survive Hole, Fillet, edit, Drawing and ca
   assert.notEqual(volume(rebuilt), volume(drawing));
 
   const stale = structuredClone(fixture.model);
-  stale.features.sweep_end_rim_fillet.feature.edge_refs[0].selector.second.profile_entity_id = "missing_profile_entity";
+  stale.features.sweep_end_rim_fillet.feature.edge_refs[0].selector.second.selector.profile_entity_id = "missing_profile_entity";
   const failed = invoke(stale);
   assert.notEqual(failed.status, 0, "missing generated source identity must fail closed");
   assert.match(`${failed.stderr}\n${failed.stdout}`, /TOPOLOGY_REFERENCE_NOT_FOUND|UNSUPPORTED_TOPOLOGY_REFERENCE/);
@@ -1333,7 +1333,7 @@ test("G7C Loft adjacent section roles survive Hole, Chamfer, edit, Drawing and c
   assert.notEqual(volume(rebuilt), volume(drawing));
 
   const stale = structuredClone(fixture.model);
-  stale.features.loft_end_rim_chamfer.feature.edge_refs[0].selector.second.end_section_id = "section_missing";
+  stale.features.loft_end_rim_chamfer.feature.edge_refs[0].selector.second.selector.end_section_id = "section_missing";
   const failed = invoke(stale);
   assert.notEqual(failed.status, 0, "missing Loft section provenance must fail closed");
   assert.match(`${failed.stderr}\n${failed.stdout}`, /SOURCE_TOPOLOGY_CHANGED|TOPOLOGY_REFERENCE_NOT_FOUND|UNSUPPORTED_TOPOLOGY_REFERENCE/);

@@ -1,21 +1,20 @@
 # Test report for 0.4.0-alpha.1
 
-Date: 2026-10-10. Tree: the public-prep snapshot, after the `SCC-DRW-024` /
-`SCC-DRW-025` section error-contract fix. This is not a public release, and
-it is not a claim that every historical acceptance report was re-run.
+Date: 2026-10-10. Tree: the public-prep snapshot, after the G7C closure
+pass. This is not a public release, and it is not a claim that every
+historical acceptance report was re-run.
 
-Ignored tests and skipped tests are not passes. The two G7C failures are
-not passes.
+Ignored tests and skipped tests are not passes. The remaining G7C Sweep
+failure is not a pass.
 
 ## Rust
 
 | Command | Result |
 | --- | --- |
-| `cargo fmt --all -- --check` | Exit 0 |
-| `cargo clippy --workspace --all-targets --locked -- -D warnings` | Exit 0 before the section-code fix. `cargo clippy -p scc-cli --all-targets --locked -- -D warnings` exit 0 after that fix. |
-| `cargo test --workspace --all-targets --locked` | Exit 0. 1166 passed, 0 failed, 2 ignored. |
-| `cargo test -p scc-cad-backend --test closed_profile_step --locked` with `SCC_CAD_PYTHON` | Exit 0. 2 passed in 3.65s. These two tests return immediately when `SCC_CAD_PYTHON` is unset, so the workspace command above did not execute them. |
-| `cargo build --release -p scc-cli` | Exit 0. `./target/release/scc --version` prints `scc 0.4.0-alpha.1`. |
+| `cargo fmt --all --check` | Exit 0 |
+| `cargo clippy --workspace --all-targets --locked -- -D warnings` | Exit 0 |
+| `cargo test --workspace --all-targets --locked` with `SCC_CAD_PYTHON` set | Exit 0. 1166 passed, 0 failed, 2 ignored. The closed-profile STEP tests ran inside this command (2 passed, 2.53s) because `SCC_CAD_PYTHON` was set. They return immediately when that variable is unset. |
+| `cargo build --release -p scc-cli` | Not rebuilt in this pass. The existing `./target/release/scc --version` still prints `scc 0.4.0-alpha.1`. Python and Node called that binary. |
 
 The two ignored tests are `explicit_point_solve_baseline` and
 `linear_array_expansion_baseline`. Both are marked as manual release-mode
@@ -30,9 +29,10 @@ enums. Those enums were not boxed.
 `PYTHONPATH=apps/scc-ui/cad` and `/tmp/aicad-cad/bin/python` (CadQuery 2.8.0,
 host Python 3.12.3):
 
-119 tests, 0 failures, 23.010s. This run is after the circle-edge `Closed()`
-fix, the parametric rebuild schema fixture update from 5 to 6, and the
-sweep/loft cap-role fix. Manufacturing assertions were not loosened.
+119 tests, 0 failures, 21.610s. This run is after the sweep lateral-arc
+resolution and the loft projected-extrema fix. Manufacturing assertions
+were not loosened. Chord tolerance stayed 0.01 mm. Associative tolerance
+stayed 1e-5 mm.
 
 ## Node, with the gated CAD tests enabled
 
@@ -55,10 +55,10 @@ this result.
 | Count | Value |
 | --- | --- |
 | Tests | 191 |
-| Passed | 189 |
-| Failed | 2 |
+| Passed | 190 |
+| Failed | 1 |
 | Skipped | 0 |
-| Wall time | 228.1s |
+| Wall time | 231.6s |
 | Process exit | 1 |
 
 Passed cases that exercise the real kernel include G1B, G2, G3, G4, G5 /
@@ -67,16 +67,32 @@ G5.1, G6A, G6B, G7A, G7B, the Project v2 M1–M16 STEP matrix, and all six
 circle, polygon, composite, slot). G6A is a v2 principal-plane Section A-A
 rebuilt from OCP and checked against an edit.
 
-### G7C failures
+### G7C
 
-Both gated G7C tests ran and failed. The assertions were not changed.
+Both gated G7C tests ran. Assertions, tolerances, and successful fixture
+geometry were not weakened. The Loft stale check now writes
+`selector.second.selector.end_section_id`. The previous path put
+`end_section_id` on the generated-face object, which `deny_unknown_fields`
+rejected as `SCC-CLI-002` before topology ran. The Sweep stale path was
+corrected the same way and was not reached.
 
-- Sweep: `SCC-SPAT-017`, `parametric_code` `TOPOLOGY_REFERENCE_NOT_FOUND`,
-  message `Sweep lateral face boundary no longer exists`.
-- Loft: `SCC-DRW-009`, message `invalid drawing dimension`, reason
-  `associative.body.length projection span 32.959726056 on view front bounds [-15.959726056, -15, 17, 15.000000774] disagrees with spatial span 32.960198442`.
+- Loft: pass. Drawing, formal STEP re-import within 1e-5 mm of the drawing
+  solid, section-radius edit, and a missing section identity fails closed.
+  The old front-span miss was a tessellated HLR polyline that stayed inside
+  the 0.01 mm chord tolerance and outside the 1e-5 mm dimension contract.
+  The extreme is now a polyline vertex. The chord tolerance was not raised.
+- Sweep: fail. `SCC-SPAT-017`, `parametric_code` `TOPOLOGY_REFERENCE_STALE`,
+  message `referenced edge was changed or removed by an upstream feature`.
+  The earlier `Sweep lateral face boundary no longer exists` error was a
+  fuse splitting the start profile circle. The resolver now accepts the
+  remaining arc of that same circle when the full edge is gone, and still
+  requires one qualifier-matching lateral face. After that, the fillet
+  source edge is the full end rim (radius 2). The fixture hole has diameter
+  4 on that cap, so the current body keeps only a semicircle between the
+  hole cylinder and the sweep torus. ADR-067 requires the same exact curve.
+  The semicircle is not used. STEP export for this fixture was not reached.
 
-G7C is not accepted for this snapshot.
+G7C is not accepted as a set. The Loft case passed. The Sweep fillet did not.
 
 ## Mounting plate
 
@@ -106,13 +122,39 @@ golden file.
 The model is not mutated. That is the intended fail-closed result. Before
 the contract fix, the same rejection was rewritten as `SCC-CLI-009`.
 
+## Browser
+
+Playwright 1.60.0 drove headless Chromium against the real Engineering
+Workbench. Each script used its isolated fake provider. `REAL_PROVIDER=NOT_RUN`.
+A fake-provider pass is not a DeepSeek or Qwen test. `browser-g6a.mjs` has no
+server source in this tree and was not run.
+
+| Script | Result |
+| --- | --- |
+| `browser.mjs` | PASS. Chinese and English Workbench, fake intent, fillet/chamfer, three-view, SVG/DXF. |
+| `browser-g4.mjs` | PASS. Revolve ADD, hole, circular pattern, three-view, SVG/DXF. |
+| `browser-g5.mjs` | PASS. Formal STEP re-import stages passed. A 422 export produced no download. |
+| `browser-g6a.mjs` | NOT_RUN. No matching fake-provider server in this tree. |
+| `browser-g6a2.mjs` | FAIL. The zh-CN feature row is `center_hole 孔`. After selecting it, the inspector has 2 `.wb-prop-input` controls. The script requires 0. |
+| `browser-g6a3.mjs` | FAIL. The same row is selectable. An invalid diameter edit returns `SCC-TOOL-010`. The script requires `SCC-TOOL-005`. |
+| `browser-g6b.mjs` | PASS. Countersink, explicit placement, section, SVG/DXF, formal STEP. |
+| `browser-g7a.mjs` | PASS. Sweep ADD, three-view, section, SVG/DXF, formal STEP. Fake provider. |
+| `browser-g7b.mjs` | PASS. Ruled loft, three-view, section, SVG/DXF, formal STEP. Fake provider. |
+
+The G6A.2 and G6A.3 assertions were not changed to match the new inspector or
+error code.
+
+## Docker
+
+`docker compose build ui` exit 1. The daemon timed out during the TLS
+handshake to `registry-1.docker.io` for `rust:1.96.0-bookworm`,
+`python:3.12.11-slim-bookworm`, and `node:24.18.1-bookworm-slim`. The image
+`aicad-scc-ui:0.4.0-alpha.1` was not built. It was not pushed. The daemon
+configuration was not changed.
+
 ## Not run
 
-- Browser. No browser tool was available. The HTTP checks above are not a
-  click-through of the Workbench. Playwright e2e was not run.
-- Docker. `docker pull rust:1.96.0-bookworm` failed: the daemon timed out
-  opening a TCP connection to `registry-1.docker.io`. The image was not
-  built. `docker compose up` was not run.
 - Real DeepSeek and Qwen calls.
 - `cargo-audit`.
 - The two ignored Rust performance baselines.
+- `browser-g6a.mjs`, because its server source is absent.
