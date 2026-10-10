@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "plate", "kind": "rectangle" },
+    { "id": "hole", "kind": "circle" }
+  ],
+  "relations": [
+    { "kind": "centered_in", "subject": "hole", "reference": "plate", "axis": "both" }
+  ],
+  "dimensions": [
+    { "target": "hole", "kind": "diameter", "value": 10 }
+  ],
+  "arrays": [
+    { "id": "hole_array", "kind": "linear", "count": 4, "spacing": 20, "element": "hole", "direction": "x" }
+  ],
+  "anchors": [
+    { "id": "origin", "kind": "origin_point" }
+  ],
+  "metadata": {}
+}

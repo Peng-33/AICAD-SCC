@@ -1,0 +1,12 @@
+timestamp=2026-09-19T18:23:15-06:00
+page_root=http://127.0.0.1:4173/
+page_engineering=http://127.0.0.1:4173/engineering.html
+branch=codex/aicad-pre-rollback-recovery
+head=dcdb3f50d479ef0735a0f7c1dc755bd41cab54cc
+git_status:
+?? docs/testing/
+docker_compose_ps:
+NAME                IMAGE                COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+aicad-scc-ui-ui-1   aicad-scc-ui:0.4.0   "docker-entrypoint.s…"   ui        6 minutes ago   Up 6 minutes (healthy)   127.0.0.1:4173->4173/tcp
+health:
+{"status":"ready","version":"scc 0.3.0","intentConfigured":false}

@@ -1,0 +1,113 @@
+{
+  "id": "engineering-model-planning",
+  "name": {
+    "zh-CN": "工程建模规划；语义拓扑角色及来源诊断",
+    "en": "Engineering Model Planning; Semantic Topology Provenance"
+  },
+  "description": "Read the real EngineeringContext and Rust ToolRegistry manifest, then plan generic EngineeringModel v2 Sketch, DatumAxis, Revolve ADD/CUT, Extrude ADD/CUT, Hole including Countersink, Linear/Circular/ExplicitPlacement Pattern, Fillet, and Chamfer features. Generic fixed-section Sweep ADD/CUT uses an explicit earlier Sketch plus a planar ordered Line/Arc Path with a validated fixed-binormal frame; missing path or section dimensions require clarification. Use create_datum_plane and create_sketch to express each explicitly specified section, followed by one create_loft ADD/CUT that references the ordered Sketch IDs. Loft is RULED and ALIGNED; require parallel co-oriented planes, strictly increasing offsets, one outer loop, and matching ordered Line/Arc/Circle topology. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.6.2",
+  "trigger": [
+    "every natural-language Engineering Intent request"
+  ],
+  "input_contract": [
+    "mode",
+    "user_text",
+    "engineering_model_snapshot_if_present",
+    "rust_tool_manifest"
+  ],
+  "required_context": [
+    "mode",
+    "engineering_context",
+    "rust_tool_manifest",
+    "model_fingerprint"
+  ],
+  "allowed_tools": [
+    "create_part",
+    "create_base_rectangle",
+    "create_base_circle",
+    "create_base_rounded_rectangle",
+    "create_base_polygon",
+    "add_hole",
+    "add_slot",
+    "add_circular_hole_pattern",
+    "add_grid_hole_pattern",
+    "add_corner_hole_pattern",
+    "add_construction_circle",
+    "declare_parameter",
+    "bind_parameter",
+    "set_parameter",
+    "set_feature_parameter",
+    "set_expression",
+    "add_constraint",
+    "remove_constraint",
+    "remove_feature",
+    "set_hole_extent",
+    "set_part_thickness",
+    "move_feature",
+    "set_drawing_property",
+    "create_parametric_plate",
+    "create_sketch",
+    "create_datum_axis",
+    "create_revolve",
+    "add_parametric_rectangular_cut",
+    "add_parametric_hole",
+    "add_feature_pattern",
+    "add_parametric_rectangular_add",
+    "create_fillet",
+    "create_chamfer",
+    "create_path",
+    "create_sweep",
+    "create_datum_plane",
+    "create_loft"
+  ],
+  "execution_steps": [
+    "Read actual model state and part identity",
+    "Intersect this contract's tool names with the current Rust manifest",
+    "Exclude create_part for edits to an existing part",
+    "Distinguish CREATE_FEATURE from MODIFY_FEATURE_PARAMETER; for edits, inspect the actual stable part and feature IDs and target exactly one existing feature slot through set_feature_parameter when the Rust manifest exposes a matching typed capability",
+    "If multiple existing Hole features match the user description, ask which feature to edit; never choose the first or nearest candidate and never recreate a same-named feature as an edit",
+    "Validate all proposed operations through the existing Rust command executor",
+    "For a new editable v2 part, create the part and centered parametric plate before adding typed Hole, Extrude CUT, and seed-referenced Pattern nodes",
+    "Use semantic planar-face selectors with a source feature and geometric qualifier for side features; never infer kernel face indices",
+    "For a rectangular boss use the generic Sketch + Extrude ADD tool; for R/C requests emit create_fillet/create_chamfer with stable semantic EdgeReference objects tied to profile entity IDs, hole ends, pocket entrances, or two semantic faces.",
+    "For shafts, flanges, hubs, bushings, and grooves use existing generic Sketch profiles plus a stable DatumAxis and Revolve ADD/CUT; do not invent part-specific Feature types. Preserve outer and valid inner loops, axis references, angle mode, and orientation.",
+    "For a DatumAxis through two points, require distinct finite datum points; use the typed principal X/Y/Z definition when the request names a principal axis.",
+    "For Countersink use add_parametric_hole with hole_kind=countersink only when both mouth diameter and included angle are explicit; do not substitute a Counterbore or Chamfer.",
+    "For explicitly listed nonuniform planar target anchors use one add_feature_pattern explicit_placement node with a typed principal/Datum reference_plane and placements of absolute local U/V targets; the source feature remains instance zero and placements contain only additional positions.",
+    "Use ExplicitPlacementPattern only for an earlier Hole or Extrude CUT seed. Keep linear and circular design intent in their corresponding Pattern kinds; reject unsupported non-planar placement or pose rotation instead of ignoring it.",
+    "For a curved rib or constant-section pipe, create a closed profile Sketch and a generic planar Line/Arc Path, then create_sweep with explicit ADD/CUT, direction, profile_origin, and fixed_binormal orientation. Ask when path radius, endpoint/location, profile size, or tangent frame is missing; never infer dimensions.",
+    "Build a complete ordered Section Sketch list from existing stable feature IDs. Verify explicit plane offsets, local centers and compatible curve sequence before create_loft; reject unsupported inner loops, twist or incompatible profiles.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "Model state and request fingerprint still match",
+    "Every tool name is registered by Rust and allowed by this Skill",
+    "EngineeringModel validation and solve complete before preview",
+    "For Project v2 Hole edits, only target the schema-backed diameter, applicable blind_depth, and supported counterbore dimensions; never expose through-hole blind depth or arbitrary JSON fields",
+    "Hole termination, support direction, compound-hole dimensions, and Pattern seed references pass EngineeringModel validation before rebuild",
+    "Pattern nodes retain their seed relation and are never replaced with manually duplicated editable features",
+    "Edge references are unique, point only to earlier active Features, and never contain raw OCP indices; preserve Fillet/Chamfer order and fail closed on missing or ambiguous topology.",
+    "A hole-mouth Chamfer remains an ordinary Chamfer Feature; it is not a Countersink.",
+    "The Revolve Sketch is closed and finite, the resolved DatumAxis lies in its profile plane, the profile does not cross the axis, the angle is valid, and the ordered rebuild proves a single valid solid before drawing.",
+    "Keep Revolve in the same ordered history as existing Extrude, Hole, Pattern, Fillet, and Chamfer features; preserve stable feature and sketch-entity references and never persist OCP indices.",
+    "Countersink main diameter, mouth diameter, included angle, axis direction, support plane, and blind-depth relationship pass EngineeringModel validation before rebuild.",
+    "Explicit placements must be finite, unique, inside the validated body through actual Boolean cuts, and tied to their declared principal/Datum reference frame.",
+    "Sweep references an earlier closed Sketch and valid open, non-self-intersecting C1 Path; profile anchor and tangent/binormal frame agree with the directed Path endpoint; sharp corners, variable sections, user twist, and arbitrary 3D paths fail closed.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Reject stale plans",
+    "Reject duplicate part creation atomically",
+    "Require confirmation for destructive or intent-changing recovery",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "model_state",
+    "allowed_tool_names",
+    "EngineeringCommand_evidence",
+    "validation_status",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

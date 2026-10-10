@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "part": {
+    "body": {
+      "footprint": {
+        "kind": "rectangle",
+        "origin": {
+          "x": -60.0,
+          "y": -40.0
+        },
+        "width": 120.0,
+        "height": 80.0
+      },
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      }
+    },
+    "bounds": {
+      "min_x": -60.0,
+      "max_x": 60.0,
+      "min_y": -40.0,
+      "max_y": 40.0,
+      "min_z": 0.0,
+      "max_z": 10.0
+    }
+  },
+  "operations": {
+    "0": {
+      "type": "cylindrical_cut",
+      "center": {
+        "x": -45.0,
+        "y": -25.0
+      },
+      "radius": 4.0,
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    },
+    "1": {
+      "type": "cylindrical_cut",
+      "center": {
+        "x": 45.0,
+        "y": -25.0
+      },
+      "radius": 4.0,
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    },
+    "2": {
+      "type": "cylindrical_cut",
+      "center": {
+        "x": -45.0,
+        "y": 25.0
+      },
+      "radius": 4.0,
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    },
+    "3": {
+      "type": "cylindrical_cut",
+      "center": {
+        "x": 45.0,
+        "y": 25.0
+      },
+      "radius": 4.0,
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    }
+  },
+  "source_map": {
+    "body": {
+      "feature": "plate",
+      "entity": "plate"
+    },
+    "operations": {
+      "0": "corner_holes:cut:0000",
+      "1": "corner_holes:cut:0001",
+      "2": "corner_holes:cut:0002",
+      "3": "corner_holes:cut:0003"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "part": {
+    "body": {
+      "footprint": {
+        "kind": "rectangle",
+        "origin": {
+          "x": -60.0,
+          "y": -40.0
+        },
+        "width": 120.0,
+        "height": 80.0
+      },
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      }
+    },
+    "bounds": {
+      "min_x": -60.0,
+      "max_x": 60.0,
+      "min_y": -40.0,
+      "max_y": 40.0,
+      "min_z": 0.0,
+      "max_z": 10.0
+    }
+  },
+  "operations": {
+    "0": {
+      "type": "cylindrical_cut",
+      "center": {
+        "x": 42.0,
+        "y": 0.0
+      },
+      "radius": 4.0,
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    },
+    "1": {
+      "type": "slot_cut",
+      "profile": {
+        "segments": [
+          {
+            "kind": "line",
+            "start": {
+              "x": -0.3923048454132636,
+              "y": -7.803847577293368
+            },
+            "end": {
+              "x": 20.392304845413264,
+              "y": 4.196152422706631
+            }
+          },
+          {
+            "kind": "arc",
+            "start": {
+              "x": 20.392304845413264,
+              "y": 4.196152422706631
+            },
+            "end": {
+              "x": 26.392304845413264,
+              "y": -6.196152422706633
+            },
+            "center": {
+              "x": 23.392304845413264,
+              "y": -1.0000000000000009
+            },
+            "radius": 6.0,
+            "direction": "clockwise"
+          },
+          {
+            "kind": "line",
+            "start": {
+              "x": 26.392304845413264,
+              "y": -6.196152422706633
+            },
+            "end": {
+              "x": 5.607695154586736,
+              "y": -18.196152422706632
+            }
+          },
+          {
+            "kind": "arc",
+            "start": {
+              "x": 5.607695154586736,
+              "y": -18.196152422706632
+            },
+            "end": {
+              "x": -0.3923048454132636,
+              "y": -7.803847577293368
+            },
+            "center": {
+              "x": 2.607695154586736,
+              "y": -13.0
+            },
+            "radius": 6.0,
+            "direction": "clockwise"
+          }
+        ]
+      },
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    },
+    "2": {
+      "type": "slot_cut",
+      "profile": {
+        "segments": [
+          {
+            "kind": "line",
+            "start": {
+              "x": -33.0,
+              "y": 16.0
+            },
+            "end": {
+              "x": -17.0,
+              "y": 16.0
+            }
+          },
+          {
+            "kind": "arc",
+            "start": {
+              "x": -17.0,
+              "y": 16.0
+            },
+            "end": {
+              "x": -17.0,
+              "y": 8.0
+            },
+            "center": {
+              "x": -17.0,
+              "y": 12.0
+            },
+            "radius": 4.0,
+            "direction": "clockwise"
+          },
+          {
+            "kind": "line",
+            "start": {
+              "x": -17.0,
+              "y": 8.0
+            },
+            "end": {
+              "x": -33.0,
+              "y": 8.0
+            }
+          },
+          {
+            "kind": "arc",
+            "start": {
+              "x": -33.0,
+              "y": 8.0
+            },
+            "end": {
+              "x": -33.0,
+              "y": 16.0
+            },
+            "center": {
+              "x": -33.0,
+              "y": 12.0
+            },
+            "radius": 4.0,
+            "direction": "clockwise"
+          }
+        ]
+      },
+      "z": {
+        "min": 0.0,
+        "max": 10.0
+      },
+      "axis": "positive_z"
+    }
+  },
+  "source_map": {
+    "body": {
+      "feature": "slot_plate",
+      "entity": "slot_plate"
+    },
+    "operations": {
+      "0": "center_hole:cut:0000",
+      "1": "slot_a:cut:0000",
+      "2": "slot_b:cut:0000"
+    }
+  }
+}

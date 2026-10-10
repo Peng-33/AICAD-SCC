@@ -1,0 +1,17 @@
+**
+!Cargo.toml
+!Cargo.lock
+!rust-toolchain.toml
+!crates/
+!crates/**
+!examples/
+!examples/**
+!skills/
+!skills/cad/
+!skills/cad/**
+!apps/
+!apps/scc-ui/
+!apps/scc-ui/**
+apps/scc-ui/e2e/
+apps/scc-ui/test-results/
+apps/scc-ui/node_modules/

@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "kind": "precision_gearbox_housing_v1",
+  "units": "mm",
+  "parameters": {
+    "envelope": {
+      "base_length": 260,
+      "base_width": 190,
+      "total_height": 165,
+      "base_thickness": 18,
+      "body_length": 220,
+      "body_width": 150,
+      "body_height": 147
+    },
+    "shell": {
+      "wall_thickness": 10,
+      "top_thickness": 12,
+      "bottom_reinforcement": 16,
+      "corner_radius": 18,
+      "body_radius": 8,
+      "inner_length": 190,
+      "inner_width": 120,
+      "inner_height": 118
+    },
+    "axes": {
+      "main": {
+        "x": 0,
+        "z": 92,
+        "through_diameter": 72,
+        "front_bearing_diameter": 110,
+        "front_bearing_depth": 24,
+        "front_step_diameter": 82,
+        "front_step_depth": 14,
+        "rear_bearing_diameter": 105,
+        "rear_bearing_depth": 22,
+        "rear_step_diameter": 80,
+        "rear_step_depth": 12
+      },
+      "second": {
+        "x": 78,
+        "z": 92,
+        "through_diameter": 48,
+        "center_distance": 78,
+        "front_bearing_diameter": 78,
+        "front_bearing_depth": 20,
+        "rear_bearing_diameter": 75,
+        "rear_bearing_depth": 18
+      },
+      "third": {
+        "z": 48,
+        "through_diameter": 35,
+        "center_distance": 62,
+        "horizontal_side": "right",
+        "front_bearing_diameter": 62,
+        "front_bearing_depth": 18,
+        "rear_bearing_diameter": 60,
+        "rear_bearing_depth": 16
+      }
+    },
+    "mounting": {
+      "ear_diameter": 42,
+      "hole_diameter": 14,
+      "counterbore_diameter": 24,
+      "counterbore_depth": 6,
+      "edge_offset_x": 25,
+      "edge_offset_y": 25
+    },
+    "top_opening": {
+      "length": 142,
+      "width": 88,
+      "corner_radius": 10,
+      "flange_width": 18,
+      "thread_count": 10,
+      "thread": "M8 x 1.25-6H",
+      "thread_depth": 15,
+      "tap_depth": 19,
+      "seal_groove_width": 4.5,
+      "seal_groove_depth": 2.6,
+      "seal_groove_offset": 10
+    },
+    "side_openings": {
+      "right_round": { "x_from_front": 118, "z": 72, "diameter": 58, "recess_diameter": 76, "recess_depth": 5 },
+      "left_rectangular": { "x_from_front": 125, "z": 76, "length": 82, "height": 56, "corner_radius": 8 }
+    },
+    "lubrication": {
+      "drain": { "thread": "M16 x 1.5-6H", "z": 26, "from_right": 38, "depth": 14 },
+      "fill": { "thread": "M20 x 1.5-6H", "from_left": 44, "from_front": 52, "depth": 16 },
+      "level": { "thread": "M18 x 1.5-6H", "z": 52, "from_front": 72 }
+    },
+    "internal_cavities": {
+      "main": { "diameter": 142, "width": 62 },
+      "second": { "diameter": 108, "width": 48 },
+      "third": { "diameter": 88, "width": 42 },
+      "intersection_fillets": [8, 6]
+    },
+    "reinforcement": {
+      "internal_rib_count": 4,
+      "internal_rib_thickness": 8,
+      "front_diagonal_angle": 42,
+      "rear_diagonal_angle": 38,
+      "bottom_longitudinal_count": 3,
+      "bottom_longitudinal_spacing": 42
+    },
+    "locating": {
+      "dowel_hole_diameter": 10,
+      "dowel_hole_depth": 14,
+      "dowel_spacing": 180,
+      "dowel_front_offset": 22,
+      "keyway_width": 14,
+      "keyway_length": 50,
+      "keyway_depth": 5,
+      "keyway_spacing": 120
+    },
+    "edge_treatments": {
+      "base_chamfer": 2,
+      "unspecified_chamfer": 1,
+      "unspecified_internal_fillet": 3
+    }
+  },
+  "manufacturing": {
+    "fits": ["main Ø72 H7", "main front Ø110 H7", "main rear Ø105 H7", "second Ø48 H7", "third Ø35 H7", "dowels Ø10 H7"],
+    "tolerances": ["second-to-main center distance 78 ±0.02", "third-to-main center distance 62 ±0.02", "dowel spacing 180 ±0.02", "seal groove width 4.5 ±0.05", "seal groove depth 2.6 ±0.03"],
+    "datums": ["A: bottom mounting plane", "B: main Ø72 H7 axis", "C: left locating face"],
+    "geometric_controls": ["bottom flatness 0.04", "shaft axes parallelism 0.02/100", "front and rear bearing coaxiality 0.025 to 0.03"],
+    "surface_finishes": ["main bearing bores Ra0.8", "secondary bearing bores Ra1.6", "mounting and sealing faces Ra1.6", "internal cavities Ra6.3", "other machined faces Ra3.2"],
+    "threads": ["M8 x 1.25-6H", "M6 x 1-6H", "M16 x 1.5-6H", "M18 x 1.5-6H", "M20 x 1.5-6H"]
+  },
+  "assumptions": [
+    { "severity": "assumption", "field": "parameters.axes.third.horizontal_side", "message": "Third shaft is placed to the right of the main shaft." },
+    { "severity": "assumption", "field": "parameters.shell.wall_thickness", "message": "Explicit outer and inner envelopes take precedence; 10 mm is treated as nominal/minimum elsewhere." }
+  ],
+  "unresolved": []
+}

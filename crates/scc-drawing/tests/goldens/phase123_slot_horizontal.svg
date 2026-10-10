@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 129.5" width="160mm" height="129.5mm">
+<g id="view_front">
+<g id="front_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_efront_body_p_0000" data-drawing-id="front:body:p:0000" x1="30" y1="110" x2="150" y2="110"/>
+<line id="p_efront_body_p_0001" data-drawing-id="front:body:p:0001" x1="150" y1="110" x2="150" y2="30"/>
+<line id="p_efront_body_p_0002" data-drawing-id="front:body:p:0002" x1="150" y1="30" x2="30" y2="30"/>
+<line id="p_efront_body_p_0003" data-drawing-id="front:body:p:0003" x1="30" y1="30" x2="30" y2="110"/>
+<line id="p_efront_slot-segment-slot_cut_0000-0000_p_0000" data-drawing-id="front:slot-segment-slot:cut:0000-0000:p:0000" x1="76" y1="64" x2="104" y2="64"/>
+<path id="p_efront_slot-segment-slot_cut_0000-0001_p_0000" data-drawing-id="front:slot-segment-slot:cut:0000-0001:p:0000" d="M 104 76 A 6 6 0 0 0 104 64"/>
+<line id="p_efront_slot-segment-slot_cut_0000-0002_p_0000" data-drawing-id="front:slot-segment-slot:cut:0000-0002:p:0000" x1="104" y1="76" x2="76" y2="76"/>
+<path id="p_efront_slot-segment-slot_cut_0000-0003_p_0000" data-drawing-id="front:slot-segment-slot:cut:0000-0003:p:0000" d="M 76 64 A 6 6 0 0 0 76 76"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="24" y1="110" x2="29" y2="110" stroke-width="0.25"/>
+<line x1="24" y1="30" x2="29" y2="30" stroke-width="0.25"/>
+<line x1="22" y1="110" x2="22" y2="30" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_height" points="22,110 21,112.5 23,112.5" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_height" points="22,30 23,27.5 21,27.5" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_height" x="20.5" y="70" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle" transform="rotate(-90 20.5 70)">80</text>
+<line x1="30" y1="116" x2="30" y2="111" stroke-width="0.25"/>
+<line x1="150" y1="116" x2="150" y2="111" stroke-width="0.25"/>
+<line x1="30" y1="118" x2="150" y2="118" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_width" points="30,118 27.5,117 27.5,119" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_width" points="150,118 152.5,119 152.5,117" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_width" x="90" y="119.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">120</text>
+<line x1="110" y1="70" x2="118" y2="62" stroke-width="0.25"/>
+<text id="t_ethree_view.slot_slot" x="119.5" y="62" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">SLOT 40 × 12 THRU</text>
+</g>
+</g>
+<g id="view_left">
+<g id="left_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_eleft_body_p_0000" data-drawing-id="left:body:p:0000" x1="10" y1="110" x2="20" y2="110"/>
+<line id="p_eleft_body_p_0001" data-drawing-id="left:body:p:0001" x1="20" y1="110" x2="20" y2="30"/>
+<line id="p_eleft_body_p_0002" data-drawing-id="left:body:p:0002" x1="20" y1="30" x2="10" y2="30"/>
+<line id="p_eleft_body_p_0003" data-drawing-id="left:body:p:0003" x1="10" y1="30" x2="10" y2="110"/>
+</g>
+<g id="left_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_eleft_slot-cut-slot_cut_0000_p_0000" data-drawing-id="left:slot-cut-slot:cut:0000:p:0000" x1="10" y1="76" x2="20" y2="76"/>
+<line id="p_eleft_slot-cut-slot_cut_0000_p_0001" data-drawing-id="left:slot-cut-slot:cut:0000:p:0001" x1="20" y1="76" x2="20" y2="64"/>
+<line id="p_eleft_slot-cut-slot_cut_0000_p_0002" data-drawing-id="left:slot-cut-slot:cut:0000:p:0002" x1="20" y1="64" x2="10" y2="64"/>
+<line id="p_eleft_slot-cut-slot_cut_0000_p_0003" data-drawing-id="left:slot-cut-slot:cut:0000:p:0003" x1="10" y1="64" x2="10" y2="76"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="10" y1="116" x2="10" y2="111" stroke-width="0.25"/>
+<line x1="20" y1="116" x2="20" y2="111" stroke-width="0.25"/>
+<line x1="10" y1="118" x2="20" y2="118" stroke-width="0.25"/>
+<polygon id="a_ethree_view.thickness" points="10,118 7.5,117 7.5,119" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.thickness" points="20,118 22.5,119 22.5,117" fill="black" stroke="none"/>
+<text id="t_ethree_view.thickness" x="15" y="119.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">10</text>
+</g>
+</g>
+<g id="view_top">
+<g id="top_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_etop_body_p_0000" data-drawing-id="top:body:p:0000" x1="30" y1="20" x2="150" y2="20"/>
+<line id="p_etop_body_p_0001" data-drawing-id="top:body:p:0001" x1="150" y1="20" x2="150" y2="10"/>
+<line id="p_etop_body_p_0002" data-drawing-id="top:body:p:0002" x1="150" y1="10" x2="30" y2="10"/>
+<line id="p_etop_body_p_0003" data-drawing-id="top:body:p:0003" x1="30" y1="10" x2="30" y2="20"/>
+</g>
+<g id="top_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_etop_slot-cut-slot_cut_0000_p_0000" data-drawing-id="top:slot-cut-slot:cut:0000:p:0000" x1="70" y1="20" x2="110" y2="20"/>
+<line id="p_etop_slot-cut-slot_cut_0000_p_0001" data-drawing-id="top:slot-cut-slot:cut:0000:p:0001" x1="110" y1="20" x2="110" y2="10"/>
+<line id="p_etop_slot-cut-slot_cut_0000_p_0002" data-drawing-id="top:slot-cut-slot:cut:0000:p:0002" x1="110" y1="10" x2="70" y2="10"/>
+<line id="p_etop_slot-cut-slot_cut_0000_p_0003" data-drawing-id="top:slot-cut-slot:cut:0000:p:0003" x1="70" y1="10" x2="70" y2="20"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+</g>
+</g>
+<g id="annotations" fill="black" font-family="sans-serif">
+<text id="t_epart_title" x="10" y="124.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">phase123_slot_horizontal</text>
+</g>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "part": {
+    "body": {
+      "footprint": {
+        "kind": "circle",
+        "center": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "radius": 80.0
+      },
+      "z": {
+        "min": 0.0,
+        "max": 20.0
+      }
+    },
+    "bounds": {
+      "min_x": -80.0,
+      "max_x": 80.0,
+      "min_y": -80.0,
+      "max_y": 80.0,
+      "min_z": 0.0,
+      "max_z": 20.0
+    }
+  },
+  "operations": {},
+  "source_map": {
+    "body": {
+      "feature": "plate",
+      "entity": "plate"
+    },
+    "operations": {}
+  }
+}

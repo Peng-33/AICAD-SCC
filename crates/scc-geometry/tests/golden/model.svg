@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -6 8 9">
+  <g fill="none" stroke="black" stroke-width="0.5">
+    <path id="arc" d="M 1 0 A 1 1 0 0 0 0 -1" />
+    <circle id="circle&amp;hole" cx="2" cy="-3" r="1.5" />
+    <line id="line" x1="-2" y1="1" x2="4" y2="-5" />
+    <circle id="marker" cx="0.5" cy="-0.5" r="0.75" fill="black" />
+    <rect id="plate" x="-1" y="-2" width="2" height="4" />
+    <polygon id="profile" points="0,0 2,0 1,-2" />
+  </g>
+</svg>

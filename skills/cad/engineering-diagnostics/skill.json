@@ -1,0 +1,82 @@
+{
+  "id": "engineering-diagnostics",
+  "name": {
+    "zh-CN": "工程错误诊断与修复建议；语义拓扑角色及来源诊断",
+    "en": "Engineering Diagnostics; Semantic Topology Provenance"
+  },
+  "description": "Map actual provider, intent, feature-rebuild, Countersink/Counterbore, explicit pattern, DatumAxis/Revolve, semantic topology, Fillet/Chamfer, spatial, section, drawing, and export errors to bounded Chinese/English recovery guidance without mutation. including actionable Path continuity, self-intersection, fixed-frame, detached Sweep ADD, and no-intersection Sweep CUT errors with original codes. Translate LOFT_* errors to their original stable code, failed validation stage and one actionable repair. Preserve the EngineeringModel on failure and never substitute another Sketch or partial solid. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.7.2",
+  "trigger": [
+    "an actual provider, intent, command, solve, spatial, drawing, or export error occurs"
+  ],
+  "input_contract": [
+    "actual_error_code",
+    "actual_error_message",
+    "current_model_snapshot_if_present"
+  ],
+  "required_context": [
+    "actual_error",
+    "current_model_state_if_present"
+  ],
+  "allowed_tools": [
+    "error.inspect",
+    "model.read"
+  ],
+  "execution_steps": [
+    "Classify the actual failing stage by code",
+    "For SCC-TOOL-010, preserve the raw message and inspect stable part_id, feature_id, slot, parameter identity, and expected type; distinguish stale references, unsupported slots, missing features, and incompatible values only when the actual error supplies that evidence",
+    "Check only the relevant current model fact",
+    "Offer the smallest legal next step and mark whether confirmation is required",
+    "Preserve G2 codes for semantic faces, hole diameter/depth, counterbore/countersink, and pattern count/spacing/axis failures",
+    "Preserve TOPOLOGY_REFERENCE_NOT_FOUND, TOPOLOGY_REFERENCE_STALE, AMBIGUOUS_TOPOLOGY_REFERENCE, INVALID_FILLET_RADIUS, FILLET_GEOMETRY_FAILED, INVALID_CHAMFER_DISTANCE, CHAMFER_GEOMETRY_FAILED, and FEATURE_DEPENDENCY_ERROR codes.",
+    "Preserve INVALID_DATUM_AXIS, AXIS_REFERENCE_NOT_FOUND, MISSING_PROFILE_REFERENCE, REVOLVE_PROFILE_INVALID, REVOLVE_PROFILE_CROSSES_AXIS, INVALID_REVOLVE_ANGLE, REVOLVE_SELF_INTERSECTION, REVOLVE_GEOMETRY_FAILED, DETACHED_ADD, REVOLVE_CUT_NO_INTERSECTION, and existing body/topology error codes; suggest only the smallest correction supported by the actual model.",
+    "Preserve SECTION_REQUEST_INVALID, SECTION_NO_INTERSECTION, SECTION_OPEN_BOUNDARY, SECTION_UNSUPPORTED_CURVE, SECTION_DEGENERATE_LOOP, SECTION_GEOMETRY_FAILED, SECTION_PARAMETRIC_REBUILD_REQUIRED, and SECTION_GEOMETRY_MISSING as distinct causes.",
+    "For a section failure, recommend only correcting the explicit principal-axis offset/direction or the reported geometry issue; never fabricate a section loop or fall back to a 2D outline.",
+    "For SCC-DRW-009, SCC-DRW-011, or SCC-DRW-014, inspect the exact annotation_id, typed source, current feature suppression state, geometry digest, and view witness.",
+    "Explain whether the reference is missing, stale, incompatible with the requested view, unsupported, or disagrees with rebuilt geometry; preserve the original error code.",
+    "Offer a concrete user-controlled correction such as selecting a valid view/section or fixing the referenced feature parameter; never auto-rebind to a nearby edge.",
+    "Preserve INVALID_COUNTERSINK, COUNTERSINK_NO_INTERSECTION, COUNTERSINK_GEOMETRY_FAILED, PATTERN_UNSUPPORTED_SEED, PATTERN_UNSUPPORTED_PLACEMENT_PLANE, PATTERN_PLANE_MISMATCH, PATTERN_DUPLICATE_PLACEMENT, PATTERN_INVALID_PLACEMENT, and PATTERN_INSTANCE_COLLISION as distinct causes with the actual failing feature and stage.",
+    "For PATH_* or SWEEP_* failures, preserve the raw code and explain the actual path, profile-frame, self-intersection, detached-body, or CUT-intersection failure in Chinese and English; suggest only corrections supported by the error evidence.",
+    "For missing/incompatible/reversed sections or detached ADD/no-intersection CUT, identify the specific Loft condition and request explicit user correction.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "Preserve the original code and message",
+    "Explain parameter binding failures in Chinese and English without guessing their cause from SCC-TOOL-010 alone",
+    "Do not infer model contents from message text",
+    "No recovery operation runs automatically",
+    "Never replace a missing or ambiguous semantic face with the first kernel face",
+    "Never recommend switching to a different paid model as a CAD geometry recovery",
+    "Never repair a missing, stale, or ambiguous semantic edge by choosing the nearest or first kernel edge.",
+    "A failed or open section boundary produces no successful drawing/export status; preserve the original section stage and error code.",
+    "Do not mark a stale/suppressed feature dimension as resolved.",
+    "Do not present nominal EngineeringModel dimensions as measured geometry evidence.",
+    "Never auto-create or modify geometry as an annotation recovery.",
+    "Do not suggest replacing a failed Countersink with Counterbore or Chamfer unless the user changes the engineering intent.",
+    "For an ExplicitPlacement failure, name the actual local placement and declared frame when available; never silently omit the failing instance.",
+    "Never hide PATH_* or SWEEP_* error codes, silently change ADD/CUT intent, infer missing dimensions, or mutate the EngineeringModel during recovery.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Never repeat a failed operation indefinitely",
+    "Require confirmation for destructive or intent-changing recovery",
+    "Do not mutate EngineeringModel",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "stage",
+    "error_code",
+    "zh-CN_explanation",
+    "en_explanation",
+    "recovery_steps",
+    "confirmation_required",
+    "section_error_context",
+    "section_recovery_guidance",
+    "associative_dimension_diagnostic",
+    "annotation_id",
+    "geometry_witness_status",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

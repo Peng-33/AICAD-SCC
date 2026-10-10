@@ -1,0 +1,16 @@
+[package]
+name = "scc-projection-consistency"
+version = "0.4.0-alpha.1"
+license = "Apache-2.0"
+edition = "2021"
+
+[dependencies]
+scc-core = { path = "../scc-core" }
+scc-projection = { path = "../scc-projection" }
+scc-spatial = { path = "../scc-spatial" }
+scc-visibility = { path = "../scc-visibility" }
+thiserror = "1"
+
+[dev-dependencies]
+serde_json = "1"
+scc-engineering = { path = "../scc-engineering" }

@@ -1,0 +1,82 @@
+{
+  "root": 12975936321959645730,
+  "step": 9,
+  "entities": {
+    "hole": {
+      "id": "hole",
+      "kind": "Circle",
+      "parameters": {
+        "diameter": {
+          "Numeric": 10.0
+        }
+      }
+    },
+    "origin": {
+      "id": "origin",
+      "kind": "Point",
+      "parameters": {}
+    },
+    "plate": {
+      "id": "plate",
+      "kind": "Rectangle",
+      "parameters": {}
+    }
+  },
+  "constraints": {
+    "c_1": {
+      "id": "c_1",
+      "kind": "CenterOf",
+      "source": "hole",
+      "target": "plate",
+      "authority": "L1",
+      "state": "Active",
+      "parameters": {
+        "axis_x": 1.0,
+        "axis_y": 1.0
+      }
+    },
+    "c_2": {
+      "id": "c_2",
+      "kind": "Distance",
+      "source": "hole",
+      "target": "hole",
+      "authority": "L1",
+      "state": "Active",
+      "parameters": {
+        "diameter": 10.0,
+        "value": 10.0
+      }
+    },
+    "c_3": {
+      "id": "c_3",
+      "kind": "ArrayRelation",
+      "source": "hole",
+      "target": "hole_array",
+      "authority": "L2",
+      "state": "Active",
+      "parameters": {
+        "array_count": 4.0,
+        "array_direction_x": 1.0,
+        "array_linear": 1.0,
+        "array_spacing": 20.0
+      }
+    },
+    "c_4": {
+      "id": "c_4",
+      "kind": "InstanceOf",
+      "source": "hole_array",
+      "target": "hole",
+      "authority": "L3",
+      "state": "Active"
+    },
+    "c_5": {
+      "id": "c_5",
+      "kind": "Fixed",
+      "source": "origin",
+      "target": "origin",
+      "authority": "L0",
+      "state": "Active",
+      "anchor_role": "origin_point"
+    }
+  }
+}

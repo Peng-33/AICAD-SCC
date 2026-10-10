@@ -1,0 +1,22 @@
+[workspace]
+members = [
+    "crates/scc-core",
+    "crates/scc-proposal",
+    "crates/scc-analysis",
+    "crates/scc-lowering",
+    "crates/scc-execution",
+    "crates/scc-geometry",
+    "crates/scc-engineering",
+    "crates/scc-drawing",
+    "crates/scc-spatial",
+    "crates/scc-projection",
+    "crates/scc-visibility",
+    "crates/scc-projection-consistency",
+    "crates/scc-manufacturing",
+    "crates/scc-project",
+    "crates/scc-cad-backend",
+    "crates/scc-dsl",
+    "crates/scc-tools",
+    "crates/scc-cli",
+]
+resolver = "2"

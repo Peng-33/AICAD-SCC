@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "profile", "kind": "polygon" }
+  ],
+  "relations": [],
+  "dimensions": [],
+  "arrays": [],
+  "anchors": [],
+  "metadata": {}
+}

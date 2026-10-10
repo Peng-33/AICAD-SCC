@@ -1,0 +1,17 @@
+/target
+/.claude
+/.vscode
+examples/*.ir.json
+examples/*.trace.json
+examples/*.state.json
+examples/*.dxf
+examples/*.svg
+examples/*.conflict.json
+/ican-a733/
+.env
+.env.*
+!.env.example
+*.log
+**/node_modules/
+**/__pycache__/
+*.py[cod]

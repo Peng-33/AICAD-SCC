@@ -1,0 +1,9 @@
+[
+  { "UpdateParameter": { "target_id": "profile", "parameter": "vertex_count", "value": 3.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "x_0", "value": 0.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "y_0", "value": 0.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "x_1", "value": 4.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "y_1", "value": 0.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "x_2", "value": 0.0 } },
+  { "UpdateParameter": { "target_id": "profile", "parameter": "y_2", "value": 3.0 } }
+]

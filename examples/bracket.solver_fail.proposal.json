@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "a", "kind": "circle" },
+    { "id": "b", "kind": "circle" }
+  ],
+  "relations": [
+    { "kind": "distance", "subject": "a", "reference": "b", "value": 10 },
+    { "kind": "distance", "subject": "a", "reference": "b", "value": 20 }
+  ],
+  "dimensions": [],
+  "arrays": [],
+  "anchors": [],
+  "metadata": {}
+}

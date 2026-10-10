@@ -1,0 +1,49 @@
+{
+  "root": 12975936321959645730,
+  "events": [
+    {
+      "snapshot": "12975936321959645730:1",
+      "command_summary": "create entity plate (Rectangle)"
+    },
+    {
+      "snapshot": "12975936321959645730:2",
+      "command_summary": "create entity hole (Circle)"
+    },
+    {
+      "snapshot": "12975936321959645730:3",
+      "command_summary": "create entity origin (Point)"
+    },
+    {
+      "snapshot": "12975936321959645730:4",
+      "command_summary": "add constraint c_1 (CenterOf) from hole to plate at authority L1"
+    },
+    {
+      "snapshot": "12975936321959645730:5",
+      "command_summary": "set parameter diameter of hole to Numeric(10.0)"
+    },
+    {
+      "snapshot": "12975936321959645730:6",
+      "command_summary": "add constraint c_2 (Distance) from hole to hole at authority L1"
+    },
+    {
+      "snapshot": "12975936321959645730:7",
+      "command_summary": "add constraint c_3 (ArrayRelation) from hole to hole_array at authority L2"
+    },
+    {
+      "snapshot": "12975936321959645730:8",
+      "command_summary": "add constraint c_4 (InstanceOf) from hole_array to hole at authority L3"
+    },
+    {
+      "snapshot": "12975936321959645730:9",
+      "command_summary": "add constraint c_5 (Fixed) from origin to origin at authority L0"
+    },
+    {
+      "snapshot": "12975936321959645730:9",
+      "command_summary": "validate graph"
+    },
+    {
+      "snapshot": "12975936321959645730:9",
+      "command_summary": "mark snapshot"
+    }
+  ]
+}

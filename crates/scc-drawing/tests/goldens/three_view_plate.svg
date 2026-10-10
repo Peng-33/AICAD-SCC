@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.5 143.5" width="163.5mm" height="143.5mm">
+<g id="view_front">
+<g id="front_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_efront_body_p_0000" data-drawing-id="front:body:p:0000" x1="33.5" y1="110" x2="153.5" y2="110"/>
+<line id="p_efront_body_p_0001" data-drawing-id="front:body:p:0001" x1="153.5" y1="110" x2="153.5" y2="30"/>
+<line id="p_efront_body_p_0002" data-drawing-id="front:body:p:0002" x1="153.5" y1="30" x2="33.5" y2="30"/>
+<line id="p_efront_body_p_0003" data-drawing-id="front:body:p:0003" x1="33.5" y1="30" x2="33.5" y2="110"/>
+<circle id="p_efront_center_hole_cut_0000_p_0001" data-drawing-id="front:center_hole:cut:0000:p:0001" cx="93.5" cy="70" r="5"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+<line x1="90.5" y1="70" x2="96.5" y2="70" data-drawing-id="phase11.center_mark:front:center_hole:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="93.5" y1="73" x2="93.5" y2="67" data-drawing-id="phase11.center_mark:front:center_hole:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="86.5" y1="70" x2="100.5" y2="70" data-drawing-id="phase11.h_centerline:front:center_hole:cut:0000:p:0001" data-role="centerline"/>
+<line x1="93.5" y1="77" x2="93.5" y2="63" data-drawing-id="phase11.v_centerline:front:center_hole:cut:0000:p:0001" data-role="centerline"/>
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="89.964466094067" y1="73.535533905933" x2="97.035533905933" y2="66.464466094067" stroke-width="0.25"/>
+<polygon id="a_ethree_view.hole_diameter_center_hole" points="89.964466094067,73.535533905933 87.489592359914,74.596194077713 88.903805922287,76.010407640086" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.hole_diameter_center_hole" points="97.035533905933,66.464466094067 99.510407640086,65.403805922287 98.096194077713,63.989592359914" fill="black" stroke="none"/>
+<text id="t_ethree_view.hole_diameter_center_hole" x="98.096194077713" y="65.403805922287" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">Ø10 THRU</text>
+<line x1="33.5" y1="116" x2="33.5" y2="111" stroke-width="0.25"/>
+<line x1="93.5" y1="116" x2="93.5" y2="111" stroke-width="0.25"/>
+<line x1="33.5" y1="118" x2="93.5" y2="118" stroke-width="0.25"/>
+<polygon id="a_ethree_view.hole_location_x_center_hole" points="33.5,118 31,117 31,119" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.hole_location_x_center_hole" points="93.5,118 96,119 96,117" fill="black" stroke="none"/>
+<text id="t_ethree_view.hole_location_x_center_hole" x="63.5" y="119.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">60</text>
+<line x1="27.5" y1="110" x2="32.5" y2="110" stroke-width="0.25"/>
+<line x1="27.5" y1="70" x2="32.5" y2="70" stroke-width="0.25"/>
+<line x1="25.5" y1="110" x2="25.5" y2="70" stroke-width="0.25"/>
+<polygon id="a_ethree_view.hole_location_y_center_hole" points="25.5,110 24.5,112.5 26.5,112.5" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.hole_location_y_center_hole" points="25.5,70 26.5,67.5 24.5,67.5" fill="black" stroke="none"/>
+<text id="t_ethree_view.hole_location_y_center_hole" x="24" y="90" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle" transform="rotate(-90 24 90)">40</text>
+<line x1="13.5" y1="110" x2="18.5" y2="110" stroke-width="0.25"/>
+<line x1="13.5" y1="30" x2="18.5" y2="30" stroke-width="0.25"/>
+<line x1="11.5" y1="110" x2="11.5" y2="30" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_height" points="11.5,110 10.5,112.5 12.5,112.5" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_height" points="11.5,30 12.5,27.5 10.5,27.5" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_height" x="10" y="70" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle" transform="rotate(-90 10 70)">80</text>
+<line x1="33.5" y1="130" x2="33.5" y2="125" stroke-width="0.25"/>
+<line x1="153.5" y1="130" x2="153.5" y2="125" stroke-width="0.25"/>
+<line x1="33.5" y1="132" x2="153.5" y2="132" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_width" points="33.5,132 31,131 31,133" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_width" points="153.5,132 156,133 156,131" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_width" x="93.5" y="133.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">120</text>
+</g>
+</g>
+<g id="view_left">
+<g id="left_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_eleft_body_p_0000" data-drawing-id="left:body:p:0000" x1="13.5" y1="110" x2="23.5" y2="110"/>
+<line id="p_eleft_body_p_0001" data-drawing-id="left:body:p:0001" x1="23.5" y1="110" x2="23.5" y2="30"/>
+<line id="p_eleft_body_p_0002" data-drawing-id="left:body:p:0002" x1="23.5" y1="30" x2="13.5" y2="30"/>
+<line id="p_eleft_body_p_0003" data-drawing-id="left:body:p:0003" x1="13.5" y1="30" x2="13.5" y2="110"/>
+</g>
+<g id="left_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_eleft_center_hole_cut_0000_p_0002" data-drawing-id="left:center_hole:cut:0000:p:0002" x1="13.5" y1="75" x2="23.5" y2="75"/>
+<line id="p_eleft_center_hole_cut_0000_p_0003" data-drawing-id="left:center_hole:cut:0000:p:0003" x1="13.5" y1="65" x2="23.5" y2="65"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="13.5" y1="116" x2="13.5" y2="111" stroke-width="0.25"/>
+<line x1="23.5" y1="116" x2="23.5" y2="111" stroke-width="0.25"/>
+<line x1="13.5" y1="118" x2="23.5" y2="118" stroke-width="0.25"/>
+<polygon id="a_ethree_view.thickness" points="13.5,118 11,117 11,119" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.thickness" points="23.5,118 26,119 26,117" fill="black" stroke="none"/>
+<text id="t_ethree_view.thickness" x="18.5" y="119.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">10</text>
+</g>
+</g>
+<g id="view_top">
+<g id="top_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_etop_body_p_0000" data-drawing-id="top:body:p:0000" x1="33.5" y1="20" x2="153.5" y2="20"/>
+<line id="p_etop_body_p_0001" data-drawing-id="top:body:p:0001" x1="153.5" y1="20" x2="153.5" y2="10"/>
+<line id="p_etop_body_p_0002" data-drawing-id="top:body:p:0002" x1="153.5" y1="10" x2="33.5" y2="10"/>
+<line id="p_etop_body_p_0003" data-drawing-id="top:body:p:0003" x1="33.5" y1="10" x2="33.5" y2="20"/>
+</g>
+<g id="top_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_etop_center_hole_cut_0000_p_0002" data-drawing-id="top:center_hole:cut:0000:p:0002" x1="88.5" y1="10" x2="88.5" y2="20"/>
+<line id="p_etop_center_hole_cut_0000_p_0003" data-drawing-id="top:center_hole:cut:0000:p:0003" x1="98.5" y1="10" x2="98.5" y2="20"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+</g>
+</g>
+<g id="annotations" fill="black" font-family="sans-serif">
+<text id="t_epart_title" x="10" y="138.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">three_view_plate</text>
+</g>
+</svg>

@@ -1,0 +1,140 @@
+{
+  "entities": [
+    {
+      "id": "plate",
+      "kind": "Rectangle"
+    },
+    {
+      "id": "hole",
+      "kind": "Circle"
+    },
+    {
+      "id": "origin",
+      "kind": "Point"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "c_1",
+      "kind": "CenterOf",
+      "source": "hole",
+      "target": "plate",
+      "context": {
+        "origin": "DerivedFromIntent",
+        "authority": "L1",
+        "derivation": null,
+        "version_hint": null
+      },
+      "parameters": {
+        "axis_x": 1.0,
+        "axis_y": 1.0
+      }
+    },
+    {
+      "id": "c_2",
+      "kind": "Distance",
+      "source": "hole",
+      "target": "hole",
+      "context": {
+        "origin": "UserSpecified",
+        "authority": "L1",
+        "derivation": null,
+        "version_hint": null
+      },
+      "parameters": {
+        "diameter": 10.0,
+        "value": 10.0
+      }
+    },
+    {
+      "id": "c_3",
+      "kind": "ArrayRelation",
+      "source": "hole",
+      "target": "hole_array",
+      "context": {
+        "origin": "DerivedFromIntent",
+        "authority": "L2",
+        "derivation": null,
+        "version_hint": null
+      },
+      "parameters": {
+        "array_count": 4.0,
+        "array_direction_x": 1.0,
+        "array_linear": 1.0,
+        "array_spacing": 20.0
+      }
+    },
+    {
+      "id": "c_4",
+      "kind": "InstanceOf",
+      "source": "hole_array",
+      "target": "hole",
+      "context": {
+        "origin": "CompilerGenerated",
+        "authority": "L3",
+        "derivation": null,
+        "version_hint": null
+      },
+      "parameters": {}
+    },
+    {
+      "id": "c_5",
+      "kind": "Fixed",
+      "source": "origin",
+      "target": "origin",
+      "context": {
+        "origin": "UserSpecified",
+        "authority": "L0",
+        "derivation": null,
+        "version_hint": null
+      },
+      "anchor_role": "origin_point",
+      "parameters": {}
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "plate",
+        "node_kind": "Entity"
+      },
+      {
+        "id": "hole",
+        "node_kind": "Entity"
+      },
+      {
+        "id": "hole_array",
+        "node_kind": "Array"
+      }
+    ],
+    "edges": [
+      {
+        "from": "hole_array",
+        "to": "hole",
+        "relation": "Ownership"
+      },
+      {
+        "from": "hole",
+        "to": "plate",
+        "relation": "Dependency"
+      }
+    ]
+  },
+  "metadata": {
+    "constraint_levels": {
+      "l0": [
+        "c_5"
+      ],
+      "l1": [
+        "c_1",
+        "c_2"
+      ],
+      "l2": [
+        "c_3"
+      ],
+      "l3": [
+        "c_4"
+      ]
+    }
+  }
+}

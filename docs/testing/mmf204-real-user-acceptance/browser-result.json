@@ -1,0 +1,133 @@
+{
+  "baseUrl": "http://127.0.0.1:4173",
+  "pages": {
+    "main": {
+      "fullInputAccepted": true,
+      "fullStage": "01\n意图\nSCC-UI-INTENT-001",
+      "fullBody": "跳转到设计画布\nSCC\n设计工作区\n项目\n未命名设计\nWorkspace mode\n2D SCC\n3D CAD\n运行流水线\n⌘↵\n用户\n调试\nEN\n中文\n01\n意图\nSCC-UI-INTENT-001\n02\nM1 编译\n尚未开始\n03\nM2 执行\n尚未开始\n04\nM3 求解\n尚未开始\n就绪\nscc 0.3.0\n意图\n项目\n\n对话\n\n设计意图\n2\n你\n12:21:09 AM\n\n### 零件名称：带加强筋的电机安装法兰座 (Part No. MMF-204)\n\n#### 一、 零件概述\n\n- **功能用途**：用于将标准法兰电机（如NEMA 23步进电机或小型伺服电机）稳固地安装在设备机架或铝型材上。\n- **材料**：铝合金 6061-T6（重量轻、易加工、强度适中）。\n- **毛坯类型**：铝板CNC铣削加工 或 压铸后机加工。\n- **整体包络尺寸**：长 120.0 mm × 宽 120.0 mm × 高 25.0 mm。\n- **难度级别**：⭐⭐（适合掌握基础特征命令后的进阶练习）。\n\n---\n\n#### 二、 主体外形特征\n\n1. **基础安装底板**：\n   - 形状为正方形板，尺寸为 **120 mm × 120 mm**，厚度为 **10 mm**。\n   - 四个外角采用大圆角过渡，圆角半径 **R15 mm**。\n   - 底面（安装面）要求平整，平面度 0.05 mm。\n2. **中心电机配合止口（圆形凸台）**：\n   - 在底板正中心，向上拉伸出一个圆柱形凸台，用于与电机的定子止口配合，保证同心度。\n   - 外径：**Φ70 mm**，高度：**15 mm**（即总高 10+15=25 mm）。\n   - **拔模斜度**：凸台外壁带有 **1°** 的拔模斜度（如果是压铸件必须有此特征；如果是CNC加工则作为工艺倒角）。\n\n---\n\n#### 三、 核心孔系特征\n\n1. **中心通孔（电机轴让位孔）**：\n   - 贯穿底板和中心凸台，用于让电机轴和联轴器穿过。\n   - 直径：**Φ38 H7**（与电机止口精密配合）。\n   - 孔口处理：顶面和底面均带有 **1×45°** 的倒角。\n2. **电机安装孔（法兰孔）**：\n   - 分布在中心凸台周围，用于将电机锁紧在法兰座上。\n   - 分布圆直径 (PCD)：**Φ54 mm**。\n   - 数量：**4个**，均布（相隔90°）。\n   - 孔类型：**沉头通孔**。底孔直径 Φ5.5 mm（适配M5螺栓），沉头部分直径 Φ10 mm，深度 5.5 mm（确保M5平头螺丝安装后与表面齐平）。\n3. **机架安装孔（底板固定孔）**：\n   - 分布在底板四个角附近，用于将整个法兰座固定在机架上。\n   - 位置：距离相邻两个直边各 **15 mm**。\n   - 数量：**4个**。\n   - 孔类型：**带沉台的通孔**。底孔直径 Φ8.5 mm（适配M8螺栓），底部（非安装面）锪平沉孔直径 Φ15 mm，深度 2 mm（用于放置垫圈或隐藏螺母）。\n\n---\n\n#### 四、 加强筋（Ribs）与减重设计\n\n为了在不增加太多重量的情况下提高零件的抗弯刚性，在底板和中心凸台之间设计了加强筋。\n\n1. **十字加强筋**：\n   - 数量：**4个**，呈十字交叉分布（与电机安装孔错开45°角）。\n   - 厚度：**4 mm**。\n   - 高度：**12 mm**（比中心凸台低 3 mm，避免干涉电机法兰面）。\n   - 拔模斜度：筋板两侧各 **0.5°**。\n2. **过渡圆角**：\n   - 加强筋与底板、加强筋与中心凸台的连接根部，均带有 **R2 mm** 的圆角，以消除应力集中，防止疲劳断裂。\n\n---\n\n#### 五、 表面质量与处理要求\n\n1. **表面粗糙度**：\n   - 中心通孔（Φ38 H7）内壁：**Ra 1.6**（保证配合精度）。\n   - 底板下安装面、中心凸台上端面：**Ra 3.2**。\n   - 其余非配合面及侧面：**Ra 6.3**。\n2. **表面处理**：\n   - 整体进行**喷砂 + 本色阳极氧化**处理，提高表面硬度和耐腐蚀性，外观呈哑光银灰色。\n3. **去毛刺**：\n   - 所有机加工后的锐边必须倒钝 **C0.2 - C0.5**，严禁有扎手的飞边。\n\n---\n\n#### 六、 几何尺寸与公差 (GD&T)\n\n虽然零件简单，但电机安装对同轴度要求较高：\n\n1. **中心通孔（Φ38 H7）**：\n   - 对底板下安装面（基准A）的**垂直度**：**0.02 mm**。\n2. **电机安装孔系（4-Φ5.5 沉头孔）**：\n   - 对中心通孔轴线（基准B）的**位置度**：**Φ0.05 mm**（确保电机能顺利穿入螺栓而不发生卡滞）。\n3. **中心凸台外圆（Φ70）**：\n   - 对中心通孔（基准B）的**同轴度**：**Φ0.03 mm**。\n\nSCC\n12:21:09 AM\n\n未配置可选意图模型。你的指令已保留——请选择已验证模板，或直接编辑 Proposal JSON。\n\n上下文\n\n文档\n添加\n\n暂无参考文档\n\n几何\n约束图\n执行轨迹\n未选择对象 − 100% + \n\n确定性工作区\n\n将意图转化为可检查的几何模型。\n\n选择已验证模板或编辑 Proposal，然后运行 M1 → M2 → M3 流水线。\n\n选择模板\n实体\n—\n约束\n—\n自由度\n—\n收敛\n—\n设计指令\n无文档\nShift+Enter 换行\n检查\nProposal\n运行时\n\n选择\n\n属性\n无\n未选择对象\n\n请选择实体、约束、轨迹事件或几何图元。\n\n叠加层\n\nMutation 构建器\n0\n操作\n更新参数\n抑制约束\n取消抑制约束\n更改权级\n目标 ID\n参数\n数值\n添加 Mutation\n\n暂无运行时 Mutation\n\nSVG\nDXF\n✓\n工作区已就绪\n\n编辑空白 Proposal，或选择已验证模板。\n\n×\n!\n意图编译器不可用\n\nNo intent compiler is configured\n\n×",
+      "simpleInputAccepted": true,
+      "simpleStage": "01\n意图\nSCC-UI-INTENT-001",
+      "simpleBody": "跳转到设计画布\nSCC\n设计工作区\n项目\n未命名设计\nWorkspace mode\n2D SCC\n3D CAD\n运行流水线\n⌘↵\n用户\n调试\nEN\n中文\n01\n意图\nSCC-UI-INTENT-001\n02\nM1 编译\n尚未开始\n03\nM2 执行\n尚未开始\n04\nM3 求解\n尚未开始\n就绪\nscc 0.3.0\n意图\n项目\n\n对话\n\n设计意图\n4\n你\n12:21:09 AM\n\n### 零件名称：带加强筋的电机安装法兰座 (Part No. MMF-204)\n\n#### 一、 零件概述\n\n- **功能用途**：用于将标准法兰电机（如NEMA 23步进电机或小型伺服电机）稳固地安装在设备机架或铝型材上。\n- **材料**：铝合金 6061-T6（重量轻、易加工、强度适中）。\n- **毛坯类型**：铝板CNC铣削加工 或 压铸后机加工。\n- **整体包络尺寸**：长 120.0 mm × 宽 120.0 mm × 高 25.0 mm。\n- **难度级别**：⭐⭐（适合掌握基础特征命令后的进阶练习）。\n\n---\n\n#### 二、 主体外形特征\n\n1. **基础安装底板**：\n   - 形状为正方形板，尺寸为 **120 mm × 120 mm**，厚度为 **10 mm**。\n   - 四个外角采用大圆角过渡，圆角半径 **R15 mm**。\n   - 底面（安装面）要求平整，平面度 0.05 mm。\n2. **中心电机配合止口（圆形凸台）**：\n   - 在底板正中心，向上拉伸出一个圆柱形凸台，用于与电机的定子止口配合，保证同心度。\n   - 外径：**Φ70 mm**，高度：**15 mm**（即总高 10+15=25 mm）。\n   - **拔模斜度**：凸台外壁带有 **1°** 的拔模斜度（如果是压铸件必须有此特征；如果是CNC加工则作为工艺倒角）。\n\n---\n\n#### 三、 核心孔系特征\n\n1. **中心通孔（电机轴让位孔）**：\n   - 贯穿底板和中心凸台，用于让电机轴和联轴器穿过。\n   - 直径：**Φ38 H7**（与电机止口精密配合）。\n   - 孔口处理：顶面和底面均带有 **1×45°** 的倒角。\n2. **电机安装孔（法兰孔）**：\n   - 分布在中心凸台周围，用于将电机锁紧在法兰座上。\n   - 分布圆直径 (PCD)：**Φ54 mm**。\n   - 数量：**4个**，均布（相隔90°）。\n   - 孔类型：**沉头通孔**。底孔直径 Φ5.5 mm（适配M5螺栓），沉头部分直径 Φ10 mm，深度 5.5 mm（确保M5平头螺丝安装后与表面齐平）。\n3. **机架安装孔（底板固定孔）**：\n   - 分布在底板四个角附近，用于将整个法兰座固定在机架上。\n   - 位置：距离相邻两个直边各 **15 mm**。\n   - 数量：**4个**。\n   - 孔类型：**带沉台的通孔**。底孔直径 Φ8.5 mm（适配M8螺栓），底部（非安装面）锪平沉孔直径 Φ15 mm，深度 2 mm（用于放置垫圈或隐藏螺母）。\n\n---\n\n#### 四、 加强筋（Ribs）与减重设计\n\n为了在不增加太多重量的情况下提高零件的抗弯刚性，在底板和中心凸台之间设计了加强筋。\n\n1. **十字加强筋**：\n   - 数量：**4个**，呈十字交叉分布（与电机安装孔错开45°角）。\n   - 厚度：**4 mm**。\n   - 高度：**12 mm**（比中心凸台低 3 mm，避免干涉电机法兰面）。\n   - 拔模斜度：筋板两侧各 **0.5°**。\n2. **过渡圆角**：\n   - 加强筋与底板、加强筋与中心凸台的连接根部，均带有 **R2 mm** 的圆角，以消除应力集中，防止疲劳断裂。\n\n---\n\n#### 五、 表面质量与处理要求\n\n1. **表面粗糙度**：\n   - 中心通孔（Φ38 H7）内壁：**Ra 1.6**（保证配合精度）。\n   - 底板下安装面、中心凸台上端面：**Ra 3.2**。\n   - 其余非配合面及侧面：**Ra 6.3**。\n2. **表面处理**：\n   - 整体进行**喷砂 + 本色阳极氧化**处理，提高表面硬度和耐腐蚀性，外观呈哑光银灰色。\n3. **去毛刺**：\n   - 所有机加工后的锐边必须倒钝 **C0.2 - C0.5**，严禁有扎手的飞边。\n\n---\n\n#### 六、 几何尺寸与公差 (GD&T)\n\n虽然零件简单，但电机安装对同轴度要求较高：\n\n1. **中心通孔（Φ38 H7）**：\n   - 对底板下安装面（基准A）的**垂直度**：**0.02 mm**。\n2. **电机安装孔系（4-Φ5.5 沉头孔）**：\n   - 对中心通孔轴线（基准B）的**位置度**：**Φ0.05 mm**（确保电机能顺利穿入螺栓而不发生卡滞）。\n3. **中心凸台外圆（Φ70）**：\n   - 对中心通孔（基准B）的**同轴度**：**Φ0.03 mm**。\n\nSCC\n12:21:09 AM\n\n未配置可选意图模型。你的指令已保留——请选择已验证模板，或直接编辑 Proposal JSON。\n\n你\n12:21:11 AM\n\n创建一块 120 mm × 120 mm、厚度 10 mm、\n四角 R15 的矩形安装板。\n\n在板中心创建一个 Φ38 贯穿孔。\n\n生成主视图、俯视图和左视图。\n\nSCC\n12:21:11 AM\n\n未配置可选意图模型。你的指令已保留——请选择已验证模板，或直接编辑 Proposal JSON。\n\n上下文\n\n文档\n添加\n\n暂无参考文档\n\n几何\n约束图\n执行轨迹\n未选择对象 − 100% + \n\n确定性工作区\n\n将意图转化为可检查的几何模型。\n\n选择已验证模板或编辑 Proposal，然后运行 M1 → M2 → M3 流水线。\n\n选择模板\n实体\n—\n约束\n—\n自由度\n—\n收敛\n—\n设计指令\n无文档\nShift+Enter 换行\n检查\nProposal\n运行时\n\n选择\n\n属性\n无\n未选择对象\n\n请选择实体、约束、轨迹事件或几何图元。\n\n叠加层\n\nMutation 构建器\n0\n操作\n更新参数\n抑制约束\n取消抑制约束\n更改权级\n目标 ID\n参数\n数值\n添加 Mutation\n\n暂无运行时 Mutation\n\nSVG\nDXF\n✓\n工作区已就绪\n\n编辑空白 Proposal，或选择已验证模板。\n\n×\n!\n意图编译器不可用\n\nNo intent compiler is configured\n\n×\n!\n意图编译器不可用\n\nNo intent compiler is configured\n\n×"
+    },
+    "engineeringWorkbench": {
+      "fullInputAccepted": false,
+      "workflow": "Intent: error\nNo intent provider is configured for engineering intent\nCancel",
+      "fixtureDrawing": {
+        "imageCount": 1,
+        "drawingMeta": "Principal · Sheet 150×110 mm · Scale 1 · Mounting Plate",
+        "status": "",
+        "bodyExcerpt": "AICAD Engineering Workbench\nNew\nOpen\nSave\nExport STEP\nLoad mounting plate fixture\nApply DSL\nUnsaved\nPart: Mounting Plate\nUndo\nRedo\nApply\nFeatures\nmain base_profile\nmounting hole_pattern:corner\nEngineering Drawing\nPrincipal\nThree-view\nThree-view drawing unavailable — SCC-SPAT-001: 2 engineering spatial readiness issue(s) block lowering\nPrincipal · Sheet 150×110 mm · Scale 1 · Mounting Plate\nGeometry Debug\nProperties\nRelations\nhole_diameter = (plate_height / 8)\ndepends on plate_height\nConstraints\nReview\nUser 3 · Derived 1 · Unresolved 0"
+      },
+      "body": "AICAD Engineering Workbench\nNew\nOpen\nSave\nExport STEP\nLoad mounting plate fixture\nApply DSL\nUnsaved\nIntent: error\nNo intent provider is configured for engineering intent\nCancel\nPart: Mounting Plate\nUndo\nRedo\nApply\nFeatures\nmain base_profile\nmounting hole_pattern:corner\nEngineering Drawing\nPrincipal\nThree-view\nThree-view drawing unavailable — SCC-SPAT-001: 2 engineering spatial readiness issue(s) block lowering\nPrincipal · Sheet 150×110 mm · Scale 1 · Mounting Plate\nGeometry Debug\nProperties\nRelations\nhole_diameter = (plate_height / 8)\ndepends on plate_height\nConstraints\nReview\nUser 3 · Derived 1 · Unresolved 0"
+    }
+  },
+  "browserErrors": [],
+  "events": [
+    {
+      "page": "main",
+      "type": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:4173/api/examples"
+    },
+    {
+      "page": "main",
+      "type": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:4173/api/intent-config"
+    },
+    {
+      "page": "main",
+      "type": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:4173/api/health"
+    },
+    {
+      "page": "main",
+      "type": "response",
+      "status": 501,
+      "url": "http://127.0.0.1:4173/api/intent"
+    },
+    {
+      "page": "main",
+      "type": "console",
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 501 (Not Implemented)"
+    },
+    {
+      "page": "main",
+      "type": "response",
+      "status": 501,
+      "url": "http://127.0.0.1:4173/api/intent"
+    },
+    {
+      "page": "main",
+      "type": "console",
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 501 (Not Implemented)"
+    },
+    {
+      "page": "engineering",
+      "type": "console",
+      "level": "error",
+      "text": "Applying inline style violates the following Content Security Policy directive 'style-src 'self' 'sha256-7hpnrz8z9c6+UmeJm/kO+iRkDo/025kJEEcZiJNULDI=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2n75ZsxjIi11dSsQ2O3rskfNP54UDFstRmdWj/SfNV4='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked."
+    },
+    {
+      "page": "engineering",
+      "type": "console",
+      "level": "error",
+      "text": "Applying inline style violates the following Content Security Policy directive 'style-src 'self' 'sha256-7hpnrz8z9c6+UmeJm/kO+iRkDo/025kJEEcZiJNULDI=''. Either the 'unsafe-inline' keyword, a hash ('sha256-2n75ZsxjIi11dSsQ2O3rskfNP54UDFstRmdWj/SfNV4='), or a nonce ('nonce-...') is required to enable inline execution. Note that hashes do not apply to event handlers, style attributes and javascript: navigations unless the 'unsafe-hashes' keyword is present. The action has been blocked."
+    },
+    {
+      "page": "engineering",
+      "type": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:4173/api/engineering/dsl"
+    },
+    {
+      "page": "engineering",
+      "type": "response",
+      "status": 200,
+      "url": "http://127.0.0.1:4173/api/engineering/drawing"
+    },
+    {
+      "page": "engineering",
+      "type": "response",
+      "status": 422,
+      "url": "http://127.0.0.1:4173/api/engineering/drawing/three-view"
+    },
+    {
+      "page": "engineering",
+      "type": "console",
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)"
+    },
+    {
+      "page": "engineering",
+      "type": "response",
+      "status": 501,
+      "url": "http://127.0.0.1:4173/api/engineering/intent"
+    },
+    {
+      "page": "engineering",
+      "type": "console",
+      "level": "error",
+      "text": "Failed to load resource: the server responded with a status of 501 (Not Implemented)"
+    }
+  ],
+  "evidenceFiles": [
+    "00-main-initial.png",
+    "00-main-initial.txt",
+    "01-main-full-input-filled.png",
+    "01-main-full-input-filled.txt",
+    "02-main-full-input-result.png",
+    "02-main-full-input-result.txt",
+    "04-main-simple-control-result.png",
+    "04-main-simple-control-result.txt",
+    "05-engineering-workbench-initial.png",
+    "05-engineering-workbench-initial.txt",
+    "06-engineering-fixture-three-view.png",
+    "06-engineering-fixture-three-view.txt",
+    "07-engineering-full-input-result.png",
+    "07-engineering-full-input-result.txt"
+  ]
+}

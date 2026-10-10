@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 110" width="150mm" height="110mm">
+<g id="objects" fill="none" stroke="black" stroke-width="0.5">
+<circle id="p_ecorner_holes_array_0_" data-drawing-id="corner_holes_array[0]" cx="25" cy="85" r="5"/>
+<circle id="p_ecorner_holes_array_1_" data-drawing-id="corner_holes_array[1]" cx="115" cy="85" r="5"/>
+<circle id="p_ecorner_holes_array_2_" data-drawing-id="corner_holes_array[2]" cx="25" cy="35" r="5"/>
+<circle id="p_ecorner_holes_array_3_" data-drawing-id="corner_holes_array[3]" cx="115" cy="35" r="5"/>
+<rect id="p_eplate" data-drawing-id="plate" x="10" y="20" width="120" height="80"/>
+</g>
+<g id="construction" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+<line x1="22" y1="85" x2="28" y2="85" data-drawing-id="center_mark:corner_holes_array[0]"/>
+<line x1="25" y1="88" x2="25" y2="82" data-drawing-id="center_mark:corner_holes_array[0]"/>
+<line x1="112" y1="85" x2="118" y2="85" data-drawing-id="center_mark:corner_holes_array[1]"/>
+<line x1="115" y1="88" x2="115" y2="82" data-drawing-id="center_mark:corner_holes_array[1]"/>
+<line x1="22" y1="35" x2="28" y2="35" data-drawing-id="center_mark:corner_holes_array[2]"/>
+<line x1="25" y1="38" x2="25" y2="32" data-drawing-id="center_mark:corner_holes_array[2]"/>
+<line x1="112" y1="35" x2="118" y2="35" data-drawing-id="center_mark:corner_holes_array[3]"/>
+<line x1="115" y1="38" x2="115" y2="32" data-drawing-id="center_mark:corner_holes_array[3]"/>
+<line x1="18" y1="85" x2="32" y2="85" data-drawing-id="h_centerline:corner_holes_array[0]"/>
+<line x1="108" y1="85" x2="122" y2="85" data-drawing-id="h_centerline:corner_holes_array[1]"/>
+<line x1="18" y1="35" x2="32" y2="35" data-drawing-id="h_centerline:corner_holes_array[2]"/>
+<line x1="108" y1="35" x2="122" y2="35" data-drawing-id="h_centerline:corner_holes_array[3]"/>
+<line x1="25" y1="92" x2="25" y2="78" data-drawing-id="v_centerline:corner_holes_array[0]"/>
+<line x1="115" y1="92" x2="115" y2="78" data-drawing-id="v_centerline:corner_holes_array[1]"/>
+<line x1="25" y1="42" x2="25" y2="28" data-drawing-id="v_centerline:corner_holes_array[2]"/>
+<line x1="115" y1="42" x2="115" y2="28" data-drawing-id="v_centerline:corner_holes_array[3]"/>
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="120" y1="30" x2="128" y2="22" stroke-width="0.25"/>
+<text id="t_ecorner_holes.pattern" x="129.5" y="22" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">4×Ø10 OFF X15 Y15</text>
+<line x1="131" y1="100" x2="140" y2="100" stroke-width="0.25"/>
+<line x1="131" y1="20" x2="140" y2="20" stroke-width="0.25"/>
+<line x1="138" y1="100" x2="138" y2="20" stroke-width="0.25"/>
+<polygon id="a_eplate.height" points="138,100 137,102.5 139,102.5" fill="black" stroke="none"/>
+<polygon id="a_eplate.height" points="138,20 139,17.5 137,17.5" fill="black" stroke="none"/>
+<text id="t_eplate.height" x="139.5" y="60" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle" transform="rotate(-90 139.5 60)">80</text>
+<line x1="10" y1="19" x2="10" y2="10" stroke-width="0.25"/>
+<line x1="130" y1="19" x2="130" y2="10" stroke-width="0.25"/>
+<line x1="10" y1="12" x2="130" y2="12" stroke-width="0.25"/>
+<polygon id="a_eplate.width" points="10,12 7.5,11 7.5,13" fill="black" stroke="none"/>
+<polygon id="a_eplate.width" points="130,12 132.5,13 132.5,11" fill="black" stroke="none"/>
+<text id="t_eplate.width" x="70" y="10.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">120</text>
+</g>
+<g id="annotations" fill="black" font-family="sans-serif">
+<text id="t_epart_title" x="10" y="105" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">Mounting Plate</text>
+</g>
+</svg>

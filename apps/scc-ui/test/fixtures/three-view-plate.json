@@ -1,0 +1,66 @@
+{
+  "part": {
+    "id": "three_view_plate",
+    "name": "Three View Plate"
+  },
+  "features": {
+    "center_hole": {
+      "type": "hole",
+      "id": "center_hole",
+      "diameter": 10.0
+    },
+    "plate": {
+      "type": "base_profile",
+      "id": "plate",
+      "name": "plate",
+      "width": 120.0,
+      "height": 80.0
+    }
+  },
+  "parameters": {
+    "center_hole_center_x": {
+      "id": "center_hole_center_x",
+      "value": {
+        "type": "scalar",
+        "value": 0.0
+      },
+      "origin": "user",
+      "authority": "L0"
+    },
+    "center_hole_center_y": {
+      "id": "center_hole_center_y",
+      "value": {
+        "type": "scalar",
+        "value": 0.0
+      },
+      "origin": "user",
+      "authority": "L0"
+    }
+  },
+  "constraints": {},
+  "feature_parameters": {
+    "center_hole": {
+      "center_x": "center_hole_center_x",
+      "center_y": "center_hole_center_y"
+    }
+  },
+  "drawing": {
+    "properties": {
+      "projection_method": {
+        "type": "projection_method",
+        "method": "third_angle"
+      }
+    }
+  },
+  "spatial": {
+    "thickness": {
+      "source": "literal",
+      "value": 10.0
+    },
+    "hole_extents": {
+      "center_hole": {
+        "type": "through_all"
+      }
+    }
+  }
+}

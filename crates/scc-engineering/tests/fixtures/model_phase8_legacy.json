@@ -1,0 +1,62 @@
+{
+  "part": {
+    "id": "mounting_plate",
+    "name": "Mounting Plate"
+  },
+  "features": {
+    "bolt_circle": {
+      "type": "hole_pattern",
+      "id": "bolt_circle",
+      "pattern": {
+        "type": "circular",
+        "center": {
+          "x": 60.0,
+          "y": 40.0
+        },
+        "pitch_circle_diameter": 90.0,
+        "count": 6,
+        "start_angle": 0.0,
+        "hole": {
+          "diameter": 8.0
+        }
+      }
+    },
+    "center_hole": {
+      "type": "hole",
+      "id": "center_hole",
+      "diameter": 10.0
+    },
+    "plate": {
+      "type": "base_profile",
+      "id": "plate",
+      "name": "plate",
+      "width": 120.0,
+      "height": 80.0
+    }
+  },
+  "parameters": {
+    "plate_width": {
+      "id": "plate_width",
+      "value": {
+        "type": "scalar",
+        "value": 120.0
+      },
+      "origin": "user",
+      "authority": "L0"
+    }
+  },
+  "constraints": {},
+  "feature_parameters": {
+    "plate": {
+      "width": "plate_width"
+    }
+  },
+  "drawing": {
+    "properties": {
+      "projection_method": {
+        "type": "projection_method",
+        "method": "third_angle"
+      }
+    }
+  }
+}

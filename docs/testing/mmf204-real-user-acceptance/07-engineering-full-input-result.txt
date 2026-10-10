@@ -1,0 +1,31 @@
+AICAD Engineering Workbench
+New
+Open
+Save
+Export STEP
+Load mounting plate fixture
+Apply DSL
+Unsaved
+Intent: error
+No intent provider is configured for engineering intent
+Cancel
+Part: Mounting Plate
+Undo
+Redo
+Apply
+Features
+main base_profile
+mounting hole_pattern:corner
+Engineering Drawing
+Principal
+Three-view
+Three-view drawing unavailable — SCC-SPAT-001: 2 engineering spatial readiness issue(s) block lowering
+Principal · Sheet 150×110 mm · Scale 1 · Mounting Plate
+Geometry Debug
+Properties
+Relations
+hole_diameter = (plate_height / 8)
+depends on plate_height
+Constraints
+Review
+User 3 · Derived 1 · Unresolved 0

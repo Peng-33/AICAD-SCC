@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "part": {
+    "body": {
+      "footprint": {
+        "kind": "rounded_rectangle",
+        "center": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "width": 120.0,
+        "height": 80.0,
+        "corner_radius": 10.0
+      },
+      "z": {
+        "min": 0.0,
+        "max": 8.0
+      }
+    },
+    "bounds": {
+      "min_x": -60.0,
+      "max_x": 60.0,
+      "min_y": -40.0,
+      "max_y": 40.0,
+      "min_z": 0.0,
+      "max_z": 8.0
+    }
+  },
+  "operations": {},
+  "source_map": {
+    "body": {
+      "feature": "rounded_base",
+      "entity": "rounded_base_segment_0"
+    },
+    "operations": {}
+  }
+}

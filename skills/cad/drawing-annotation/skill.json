@@ -1,0 +1,79 @@
+{
+  "id": "drawing-annotation",
+  "name": {
+    "zh-CN": "工程图标注；语义拓扑角色及来源诊断",
+    "en": "Drawing Annotation; Semantic Topology Provenance"
+  },
+  "description": "Report only typed, source-linked dimensions and center geometry present in the formal DrawingModel; retain feature provenance, distinguish observable from unobservable machining requirements, and report countersink geometry and annotation capability independently. including fixed-section Sweep profile/path dimensions and their observability limits. Do not infer Loft station diameters, widths or internal profile dimensions from a silhouette. Report NOT_OBSERVABLE_IN_CURRENT_DRAWING unless a formal section or other typed witness directly exposes the station. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.7.2",
+  "trigger": [
+    "a formal drawing is generated"
+  ],
+  "input_contract": [
+    "formal_drawing_evidence",
+    "request_analysis_if_present"
+  ],
+  "required_context": [
+    "formal_drawing_model"
+  ],
+  "allowed_tools": [
+    "drawing.annotation.read"
+  ],
+  "execution_steps": [
+    "Enumerate formal dimensions and their feature targets",
+    "Enumerate generated center marks and centerlines",
+    "Classify requested items as ANNOTATED, RECOGNIZED_BUT_NOT_RENDERED, UNSUPPORTED, or AMBIGUOUS",
+    "Identify Hole and Pattern provenance from EngineeringModel/rebuild evidence when available",
+    "Keep edge-treatment feature/source provenance when associating displayed geometry; do not treat a projected arc as a requested Fillet dimension unless typed dimension evidence exists.",
+    "Associate any available revolved profile, axis, and analytic cylindrical/conical surface evidence with its source Feature; do not invent diameter or axis dimensions that are absent from typed DrawingModel evidence.",
+    "Classify each requested dimension as OBSERVABLE, ANNOTATED_FROM_VALIDATED_FEATURE, REQUIRES_SECTION_VIEW, NOT_OBSERVABLE, or UNSUPPORTED; a feature parameter alone is not proof that a drawing expresses the dimension.",
+    "For Section A-A, verify its section plane, viewing direction, exact-section model digest provenance, loop and hatch counts, and stated sampling tolerance before describing internal geometry.",
+    "Keep sections and dimensions tied to the current model rebuild; after a model edit, regenerate the drawing and do not reuse stale annotation values.",
+    "Enumerate the formal associative-dimension index by stable annotation_id and verify each resolved entry links to exactly one DrawingDimension and one layout in its stated view.",
+    "Resolve FeatureParameter and BodyEnvelope references only against the current EngineeringModel v2 and its validated Spatial evidence; opaque face evidence ids are canonical descriptors, never OCP indices.",
+    "On rebuild, recompute association values and witnesses; omit suppressed features and reject stale or ambiguous references without proximity rebinding.",
+    "Retain the existing requested-item observability classification and report unsupported feature-linked dimensions explicitly.",
+    "For Countersink, verify actual analytic conical geometry separately from the drawing callout; report GEOMETRY_SUPPORTED=PASS and ANNOTATION_SUPPORTED=PARTIAL when no typed mouth-diameter/included-angle dimension exists.",
+    "For ExplicitPlacementPattern, verify instance geometry against the EngineeringModel placements but do not invent a pattern-spacing callout for nonuniform positions.",
+    "For Sweep requests, identify the engineering profile and Path parameters separately; mark profile dimensions or internal path placement NOT_OBSERVABLE when the current views and typed annotations do not establish them, and request a section/auxiliary view where supported.",
+    "Keep the source EngineeringModel section parameters separate from measured DrawingModel curves; report missing station-specific evidence explicitly.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "Only DrawingModel evidence counts as annotated",
+    "A tolerance is annotated only when a typed specification is attached",
+    "Unsupported GD&T, datum, and roughness requirements remain explicit",
+    "A projected circle alone does not prove a Hole or Counterbore annotation exists",
+    "Do not infer an axis, diameter, or angular dimension from projected appearance alone; only typed source-linked DrawingModel evidence counts as an annotation.",
+    "Never infer an internal blind depth from an ordinary orthographic opening; require a formal section or typed linked dimension.",
+    "A Section A-A boundary proves only the material cut it actually displays; do not claim it contains a feature-specific machining callout unless a typed DrawingDimension references that feature.",
+    "A resolved associative record must have a current geometry digest, exact evidence ids, matching EngineeringModel value, a measured Drawing projection, and a legal view layout.",
+    "Unsupported or section-required records do not count as rendered dimensions.",
+    "SVG paths and screen pixels are never used to reconstruct engineering values.",
+    "A visible countersink cone is not a typed countersink dimension or standards-compliant callout.",
+    "Do not represent nonuniform explicit placements with an invented uniform pitch, spacing, or circular pattern annotation.",
+    "Do not infer a Sweep profile size, path radius, or hidden Path segment from a silhouette alone; preserve the EngineeringModel parameter evidence separately from drawing observability.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Never add unassociated text as a dimension",
+    "Do not modify geometry to fit annotations",
+    "Do not claim standards compliance without a standards validator",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "formal_dimensions",
+    "center_geometry",
+    "requirement_coverage",
+    "unsupported_annotation_capabilities",
+    "observability_classification",
+    "section_provenance",
+    "unexpressed_requirements",
+    "associative_dimensions",
+    "association_status",
+    "geometry_witnesses",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

@@ -1,0 +1,286 @@
+name: aicad-scc-ui
+
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: apps/scc-ui/Dockerfile
+    environment:
+      SCC_INTENT_PROVIDER: "${SCC_INTENT_PROVIDER:-disabled}"
+      SCC_INTENT_ENDPOINT: "${SCC_INTENT_ENDPOINT:-}"
+      SCC_INTENT_MODEL: "${SCC_INTENT_MODEL:-}"
+      SCC_INTENT_API_KEY: "${SCC_INTENT_API_KEY:-}"
+    image: aicad-scc-ui:0.4.0-alpha.1
+    ports:
+      - "127.0.0.1:4173:4173"
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+
+  cad-test:
+    build:
+      context: .
+      dockerfile: apps/scc-ui/Dockerfile
+    image: aicad-scc-ui:g3-test
+    network_mode: none
+    command: ["/opt/aicad-cad/bin/python", "-m", "unittest", "discover", "-s", "apps/scc-ui/cad/tests", "-v"]
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+
+  cad-rust-test:
+    build:
+      context: .
+      dockerfile: apps/scc-ui/Dockerfile
+    image: aicad-scc-ui:g3-test
+    network_mode: none
+    command: ["node", "--test", "apps/scc-ui/test/rust-step.integration.test.mjs", "apps/scc-ui/test/rust-parametric.integration.test.mjs", "apps/scc-ui/test/engineering-intent.test.mjs"]
+    environment:
+      AICAD_RUST_STEP_INTEGRATION: "1"
+      AICAD_RUST_PARAMETRIC_INTEGRATION: "1"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+
+  g3-browser:
+    image: aicad-scc-ui:g3-test
+    command: ["node", "apps/scc-ui/e2e/fake-provider-server.mjs"]
+    environment:
+      SCC_UI_HOST: "0.0.0.0"
+      SCC_UI_PORT: "4173"
+    networks:
+      - g3-browser-internal
+    volumes:
+      - ./apps/scc-ui/e2e:/opt/scc/apps/scc-ui/e2e:ro
+    expose:
+      - "4173"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4173/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      start_period: 5s
+      retries: 12
+
+  e2e:
+    build:
+      context: apps/scc-ui/e2e
+    image: aicad-scc-ui-e2e:g3-test
+    depends_on:
+      g3-browser:
+        condition: service_healthy
+    environment:
+      SCC_UI_URL: "http://g3-browser:4173/"
+      SCC_UI_SCREENSHOT: "/artifacts/aicad-g3-engineering-workbench.png"
+    volumes:
+      - ./docs/testing/phase-g3-browser:/artifacts
+    networks:
+      - g3-browser-internal
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2.0
+    restart: "no"
+
+  g4-cad-test:
+    build:
+      context: .
+      dockerfile: apps/scc-ui/Dockerfile
+    image: aicad-scc-ui:g4-test
+    network_mode: none
+    command: ["/opt/aicad-cad/bin/python", "-m", "unittest", "discover", "-s", "apps/scc-ui/cad/tests", "-v"]
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+
+  g4-cad-rust-test:
+    build:
+      context: .
+      dockerfile: apps/scc-ui/Dockerfile
+    image: aicad-scc-ui:g4-test
+    network_mode: none
+    command: ["node", "--test", "apps/scc-ui/test/rust-step.integration.test.mjs", "apps/scc-ui/test/rust-parametric.integration.test.mjs", "apps/scc-ui/test/engineering-intent.test.mjs"]
+    environment:
+      AICAD_RUST_STEP_INTEGRATION: "1"
+      AICAD_RUST_PARAMETRIC_INTEGRATION: "1"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+
+  g4-browser:
+    image: aicad-scc-ui:g4-test
+    command: ["node", "apps/scc-ui/e2e/fake-provider-server-g4.mjs"]
+    environment:
+      SCC_UI_HOST: "0.0.0.0"
+      SCC_UI_PORT: "4173"
+    networks:
+      - g4-browser-internal
+    volumes:
+      - ./apps/scc-ui/e2e:/opt/scc/apps/scc-ui/e2e:ro
+    expose:
+      - "4173"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4173/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      start_period: 5s
+      retries: 12
+
+  g4-e2e:
+    build:
+      context: apps/scc-ui/e2e
+    image: aicad-scc-ui-e2e:g4-test
+    command: ["node", "browser-g4.mjs"]
+    depends_on:
+      g4-browser:
+        condition: service_healthy
+    environment:
+      SCC_UI_URL: "http://g4-browser:4173/"
+      SCC_UI_SCREENSHOT: "/artifacts/aicad-g4-engineering-workbench.png"
+    volumes:
+      - ./docs/testing/phase-g4-browser:/artifacts
+    networks:
+      - g4-browser-internal
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2.0
+    restart: "no"
+
+  g5-browser:
+    image: aicad-scc-ui:g5-test
+    command: ["node", "apps/scc-ui/e2e/fake-provider-server-g5.mjs"]
+    environment:
+      SCC_UI_HOST: "0.0.0.0"
+      SCC_UI_PORT: "4173"
+    networks:
+      - g5-browser-internal
+    volumes:
+      - ./apps/scc-ui/e2e:/opt/scc/apps/scc-ui/e2e:ro
+    expose:
+      - "4173"
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2.0
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4173/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      start_period: 5s
+      retries: 12
+
+  g5-e2e:
+    build:
+      context: apps/scc-ui/e2e
+    image: aicad-scc-ui-e2e:g5-test
+    command: ["node", "browser-g5.mjs"]
+    depends_on:
+      g5-browser:
+        condition: service_healthy
+    environment:
+      SCC_UI_URL: "http://g5-browser:4173/"
+      SCC_UI_SCREENSHOT: "/artifacts/aicad-g5-engineering-workbench.png"
+    volumes:
+      - ./docs/testing/phase-g5-step:/artifacts
+    networks:
+      - g5-browser-internal
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 2.0
+    restart: "no"
+
+networks:
+  g3-browser-internal:
+    internal: true
+  g4-browser-internal:
+    internal: true
+  g5-browser-internal:
+    internal: true

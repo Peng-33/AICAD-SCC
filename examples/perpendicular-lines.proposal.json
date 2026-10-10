@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "reference", "kind": "line" },
+    { "id": "subject", "kind": "line" }
+  ],
+  "relations": [
+    {
+      "kind": "perpendicular_to",
+      "subject": "subject",
+      "reference": "reference"
+    }
+  ],
+  "dimensions": [],
+  "arrays": [],
+  "anchors": [],
+  "metadata": {
+    "name": "M3 perpendicular line validation"
+  }
+}

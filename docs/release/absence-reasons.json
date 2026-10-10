@@ -1,0 +1,99 @@
+{
+  "missing": [
+    {
+      "path": ".agent/DECISIONS.md",
+      "reason": "internal agent state"
+    },
+    {
+      "path": ".agent/STATE.md",
+      "reason": "internal agent state"
+    },
+    {
+      "path": "SCC_Architecture_Compliance_Report.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Architecture_Gap_Report.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Architecture_Specification.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Milestone2_Acceptance_Report.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Milestone2_Complete_Architecture_Review_Report.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Required_Fix_List.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_Risk_Assessment.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "SCC_UI_UX_Design_Specification_EN.docx",
+      "reason": "office document excluded from the source snapshot"
+    },
+    {
+      "path": "docs/plans/AICAD-工程化架构技术方案.md",
+      "reason": "internal planning and diagnosis notes"
+    },
+    {
+      "path": "docs/plans/AICAD-愿景差距诊断报告.md",
+      "reason": "internal planning and diagnosis notes"
+    },
+    {
+      "path": "docs/plans/AICAD-操作界面诊断报告.md",
+      "reason": "internal planning and diagnosis notes"
+    },
+    {
+      "path": "docs/plans/AICAD-混乱诊断报告.md",
+      "reason": "internal planning and diagnosis notes"
+    },
+    {
+      "path": "docs/plans/AICAD-项目介绍与架构说明.md",
+      "reason": "internal planning and diagnosis notes"
+    },
+    {
+      "path": "docs/testing/engineering-ui-consolidation/verification-report.md",
+      "reason": "internal agent working-tree dump"
+    },
+    {
+      "path": "tasks/plan.md",
+      "reason": "internal task notes"
+    },
+    {
+      "path": "tasks/todo.md",
+      "reason": "internal task notes"
+    }
+  ],
+  "extra": [
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "NOTICE",
+    "README.zh-CN.md",
+    "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md",
+    "assets/brand/logo.svg",
+    "docs/README.md",
+    "docs/api/http.md",
+    "docs/architecture/overview.md",
+    "docs/development/building.md",
+    "docs/examples/mounting-plate.md",
+    "docs/getting-started/quickstart.md",
+    "docs/limitations/current.md",
+    "docs/roadmap/directions.md",
+    "examples/mounting-plate.dsl"
+  ]
+}

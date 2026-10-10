@@ -1,0 +1,63 @@
+{
+  "id": "mechanical-part-analysis",
+  "name": {
+    "zh-CN": "机械零件需求解析；语义拓扑角色及来源诊断",
+    "en": "Mechanical Part Analysis; Semantic Topology Provenance"
+  },
+  "description": "Extract explicit dimensions and intent for generic Sketch/Revolve and Extrude operations, axis references, simple/counterbore/countersink holes, linear/circular/explicit placement patterns, R-radius Fillets, and C-distance Chamfers; identify semantic source topology and report missing or ambiguous information without guessing. and fixed-section planar Sweep paths; capture explicit section dimensions, ordered Line/Arc endpoints, path radius, and start-frame requirements without guessing. Analyse Loft requests as ordered existing Sketch sections. Confirm every section plane, offset, profile size/center, one-to-one curve correspondence, RULED mode, operation, and aligned orientation from the user's request; ask when critical values are missing and never infer a section. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.5.2",
+  "trigger": [
+    "every natural-language Engineering Intent request"
+  ],
+  "input_contract": [
+    "user_text",
+    "current_model_snapshot_if_present"
+  ],
+  "required_context": [
+    "user_text",
+    "current_model_snapshot_if_present"
+  ],
+  "allowed_tools": [],
+  "execution_steps": [
+    "Scan explicit dimension and technical-requirement evidence",
+    "Compare labelled repeated values for conflicts",
+    "Mark uncertain and unsupported requirements without translating them into geometry",
+    "Classify simple, counterbore, and countersink holes separately; record support face, axis direction, through/blind termination, and seed pattern dimensions",
+    "For every requested R/C edge treatment, preserve the source feature and stable sketch entity, hole end, pocket entrance, or adjacent semantic faces; distinguish a hole-mouth Chamfer from Countersink.",
+    "For a revolved shape, record the axial section profile, axis direction and datum definition, ADD/CUT intent, full or partial angle, orientation, and any outer/inner loops as separate explicit evidence.",
+    "For Countersink requests, preserve the explicit mouth diameter and included angle separately from the main Hole diameter; if either is absent, ask instead of choosing a conventional angle. Keep Countersink distinct from Counterbore and edge Chamfer.",
+    "For nonuniform listed hole or cut locations, preserve each target position and its reference plane as an ExplicitPlacementPattern candidate; preserve PCD/count/start-angle intent as CircularPattern and uniform direction/spacing intent as LinearPattern.",
+    "For a Sweep request, record profile type and dimensions, each ordered planar Line/Arc segment, path radius and endpoints, ADD/CUT intent, directed start anchor, and fixed-binormal frame; mark any missing value AMBIGUOUS or MISSING.",
+    "Map explicit Loft requirements to section Sketch identities, dimensions, plane offsets and operation; record missing values as AMBIGUOUS or MISSING rather than inventing them.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "Every reported explicit value has an input span",
+    "Derived values come only from the validated EngineeringModel context",
+    "No missing engineering value is inferred",
+    "Countersink angle and mouth diameter remain explicit; unsupported geometry is never silently converted to another hole type",
+    "Never represent Edge7 or an OCP edge index as engineering intent; preserve edge selection ambiguity for deterministic kernel resolution.",
+    "Do not infer a missing rotation axis, profile closure, radius, angle, or inner loop; mark an axis-crossing or unsupported profile as ambiguous/unsupported until its actual geometry is validated.",
+    "Never derive a Countersink angle or mouth diameter from a standard-size assumption; only derive conical depth from validated mouth diameter, main bore diameter, and included angle.",
+    "Explicit placement coordinates require their declared principal/Datum reference plane and are not assumed to be world XY.",
+    "Never infer a Sweep path radius, endpoint, section size, or orientation; sharp-corner joins, self-intersections, closed paths, variable sections, twist, and arbitrary 3D paths are unsupported.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Return ambiguity for user clarification",
+    "Keep unsupported requirements visible",
+    "Do not mutate EngineeringModel",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "EXPLICIT",
+    "DERIVED",
+    "AMBIGUOUS",
+    "CONFLICTING",
+    "UNSUPPORTED",
+    "MISSING",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

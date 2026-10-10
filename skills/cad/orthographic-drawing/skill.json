@@ -1,0 +1,83 @@
+{
+  "id": "orthographic-drawing",
+  "name": {
+    "zh-CN": "机械三视图生成与检查；语义拓扑角色及来源诊断",
+    "en": "Orthographic Drawing; Semantic Topology Provenance"
+  },
+  "description": "Request actual Front, Top, and Left views and, when required, a principal-plane Section A-A from the validated EngineeringModel v2 final CadQuery/OCP body through formal SpatialModel, ProjectionModel, VisibilityModel, and DrawingModel gates, including countersinks and derived pattern instances. and generic planar Line/Arc Sweep results, including bounded curved-edge projection and formal section evidence. For Loft output, inspect the current OCP-derived Spatial/Projection/Visibility/DrawingModel result in Front/Top/Left and request a real Section A-A through each relevant transition when section dimensions are otherwise unobservable. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.7.2",
+  "trigger": [
+    "a validated EngineeringModel is available",
+    "three-view drawing is requested",
+    "an internal feature or machining depth is not observable in the three orthographic views"
+  ],
+  "input_contract": [
+    "validated_engineering_model",
+    "model_fingerprint"
+  ],
+  "required_context": [
+    "validated_engineering_model",
+    "spatial_readiness",
+    "projection_method"
+  ],
+  "allowed_tools": [
+    "drawing.three_view",
+    "drawing.section_a_a"
+  ],
+  "execution_steps": [
+    "Call the formal three-view drawing endpoint",
+    "Verify distinct Front, Top, and Left views in the formal DrawingModel and SVG",
+    "Retain the projection method and model fingerprint",
+    "Include exact rebuilt Hole, Counterbore, non-Z-axis, and Pattern geometry in the same single-body three-view pipeline",
+    "Verify views are rebuilt from the treated B-Rep after every ordered Fillet/Chamfer operation; do not draw rounded corners in the renderer.",
+    "For Revolve bodies, verify axial and side views from formal Spatial/Projection/Visibility/Drawing evidence; preserve circles and straight stepped-profile edges when analytically projected and require reported tolerance for derived curves.",
+    "When a requirement is not observable in Front/Top/Left, ask for or use an explicit principal-plane section axis, offset in millimetres, and viewing direction; never infer a cutting plane from the screen.",
+    "Verify Section A-A comes from a read-only OCP section of the current validated parametric rebuild, shares the DrawingModel with Front/Top/Left, and hatches only even-odd material regions.",
+    "Keep oblique, stepped, and revolved sections deferred unless a formal geometry contract supports them.",
+    "After validated rebuild and frozen Front/Top/Left projections, resolve requested dimensions from stable typed feature parameters or verified body geometry.",
+    "Select a view that contains an exact matching projection witness; if no unique witness exists, record the required section/auxiliary view or UNSUPPORTED instead of guessing.",
+    "Rebuild the association index and layouts after every upstream feature edit; remove dimensions for suppressed or deleted sources.",
+    "Keep the single DrawingModel as the common source for SVG and DXF and retain G6A section limitations.",
+    "Verify countersink cone faces and ExplicitPlacementPattern instances come from the actual final OCP body and flow through formal HLR/Spatial/Projection/Visibility evidence; use a supported section when the cone or internal depth is not visible in an orthographic view.",
+    "Keep countersink geometry status separate from annotation status; if the DrawingModel lacks a typed linked mouth-diameter/angle callout, report annotation support as PARTIAL.",
+    "For Sweep geometry, verify the actual rebuilt curved B-Rep through Front/Top/Left and Section A-A; retain the declared 0.01 mm HLR and 0.05 mm Spatial sampled-curve bounds where applicable, and report internal/path dimensions not uniquely visible as NOT_OBSERVABLE_IN_CURRENT_DRAWING.",
+    "Verify Loft drawing views and section geometry come from the same current EngineeringModel fingerprint and final validated OCP body.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "Spatial readiness passes",
+    "Projection consistency and visibility validation pass",
+    "All three formal views belong to the same DrawingModel",
+    "Require current model identity and all three views after every full-history feature rebuild",
+    "Fillet/Chamfer geometry must be visible from the final rebuilt shape; model-response completion alone is not drawing completion.",
+    "A valid Revolve kernel body alone is insufficient: all three views must be generated from the current final feature history, with visibility and derived-curve evidence preserved.",
+    "Do not label a model complete when requested internal dimensions remain unobservable or lack typed feature-linked annotation.",
+    "Every visible parametric dimension resolves against current EngineeringModel v2 and validated Spatial/Projection evidence.",
+    "A requested blind depth may be ANNOTATED_FROM_VALIDATED_FEATURE while remaining unobservable in ordinary orthographic geometry.",
+    "No stale association survives an upstream rebuild.",
+    "Do not infer a countersink mouth diameter or included angle from a projected cone; require validated analytic B-Rep or typed DrawingModel evidence.",
+    "Pattern placement views must contain the expected actual projected geometry count and current model fingerprint.",
+    "A projected Sweep outline does not prove its hidden section size or full path definition; require an appropriate section or STEP geometric evidence when those values are internal or ambiguous.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Propagate the actual SCC-SPAT or SCC-DRW code",
+    "Never substitute a single 2D profile",
+    "Do not bypass a failed drawing gate",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "formal_view_evidence",
+    "drawing_mode",
+    "projection_method",
+    "model_fingerprint",
+    "section_view_evidence",
+    "unobservable_feature_report",
+    "associative_dimension_evidence",
+    "association_update_status",
+    "observability_report",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

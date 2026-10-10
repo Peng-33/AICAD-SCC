@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "kind": "feature_graph_v1",
+  "name": "six-hole-flange",
+  "units": "mm",
+  "parameters": {
+    "outer_diameter": { "value": 160, "source": "user" },
+    "thickness": { "value": 18, "source": "user" },
+    "bore_diameter": { "value": 60, "source": "user" },
+    "mounting_hole_diameter": { "value": 14, "source": "user" },
+    "mounting_pcd": { "value": 120, "source": "user" }
+  },
+  "features": [
+    {
+      "id": "body",
+      "type": "cylinder",
+      "operation": "add",
+      "diameter": { "parameter": "outer_diameter" },
+      "length": { "parameter": "thickness" },
+      "axis": "z",
+      "origin": { "x": 0, "y": 0, "z": 0 }
+    },
+    {
+      "id": "center_bore",
+      "type": "cylinder",
+      "operation": "cut",
+      "diameter": { "parameter": "bore_diameter" },
+      "length": 20,
+      "axis": "z",
+      "origin": { "x": 0, "y": 0, "z": -1 }
+    },
+    {
+      "id": "mounting_pattern",
+      "type": "circular_hole_pattern",
+      "operation": "cut",
+      "diameter": { "parameter": "mounting_hole_diameter" },
+      "length": 20,
+      "count": 6,
+      "pitch_diameter": { "parameter": "mounting_pcd" },
+      "start_angle": 0,
+      "axis": "z",
+      "origin": { "x": 0, "y": 0, "z": -1 }
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req_body",
+      "text": "Outer diameter 160 mm and body thickness 18 mm",
+      "disposition": "geometry",
+      "feature_ids": ["body"]
+    },
+    {
+      "id": "req_holes",
+      "text": "Center bore diameter 60 mm and six diameter 14 mm holes on diameter 120 mm PCD",
+      "disposition": "geometry",
+      "feature_ids": ["center_bore", "mounting_pattern"]
+    },
+    {
+      "id": "req_bore_fit",
+      "text": "Center bore fit H7",
+      "disposition": "manufacturing",
+      "manufacturing_ref": "fits[0]"
+    }
+  ],
+  "manufacturing": {
+    "fits": ["center bore diameter 60 H7"],
+    "tolerances": [],
+    "datums": [],
+    "geometric_controls": [],
+    "surface_finishes": [],
+    "threads": []
+  },
+  "assumptions": [],
+  "unresolved": []
+}

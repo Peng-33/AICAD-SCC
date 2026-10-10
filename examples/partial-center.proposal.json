@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "plate", "kind": "rectangle" },
+    { "id": "hole", "kind": "circle" }
+  ],
+  "relations": [
+    {
+      "kind": "centered_in",
+      "subject": "hole",
+      "reference": "plate",
+      "axis": "x"
+    }
+  ],
+  "dimensions": [
+    { "target": "plate", "kind": "width", "value": 100 },
+    { "target": "plate", "kind": "height", "value": 60 },
+    { "target": "hole", "kind": "diameter", "value": 20 }
+  ],
+  "arrays": [],
+  "anchors": [
+    { "id": "plate_center", "kind": "fixed_center", "entity": "plate" }
+  ],
+  "metadata": {
+    "name": "M3 partial-axis centered plate and hole"
+  }
+}

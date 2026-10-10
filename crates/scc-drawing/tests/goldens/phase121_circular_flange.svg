@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248.568542494924 296.568542494924" width="248.568542494924mm" height="296.568542494924mm">
+<g id="view_front">
+<g id="front_objects" fill="none" stroke="black" stroke-width="0.5">
+<circle id="p_efront_body_p_0001" data-drawing-id="front:body:p:0001" cx="156.568542494924" cy="120" r="80"/>
+<circle id="p_efront_bolt_pattern_cut_0000_p_0001" data-drawing-id="front:bolt_pattern:cut:0000:p:0001" cx="216.568542494924" cy="120" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0001_p_0001" data-drawing-id="front:bolt_pattern:cut:0001:p:0001" cx="198.994949366117" cy="77.573593128807" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0002_p_0001" data-drawing-id="front:bolt_pattern:cut:0002:p:0001" cx="156.568542494924" cy="60" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0003_p_0001" data-drawing-id="front:bolt_pattern:cut:0003:p:0001" cx="114.142135623731" cy="77.573593128807" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0004_p_0001" data-drawing-id="front:bolt_pattern:cut:0004:p:0001" cx="96.568542494924" cy="120" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0005_p_0001" data-drawing-id="front:bolt_pattern:cut:0005:p:0001" cx="114.142135623731" cy="162.426406871193" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0006_p_0001" data-drawing-id="front:bolt_pattern:cut:0006:p:0001" cx="156.568542494924" cy="180" r="7"/>
+<circle id="p_efront_bolt_pattern_cut_0007_p_0001" data-drawing-id="front:bolt_pattern:cut:0007:p:0001" cx="198.994949366117" cy="162.426406871193" r="7"/>
+<circle id="p_efront_center_hole_cut_0000_p_0001" data-drawing-id="front:center_hole:cut:0000:p:0001" cx="156.568542494924" cy="120" r="30"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+<line x1="153.568542494924" y1="120" x2="159.568542494924" y2="120" data-drawing-id="phase11.center_mark:front:body:p:0001" data-role="center_mark"/>
+<line x1="156.568542494924" y1="123" x2="156.568542494924" y2="117" data-drawing-id="phase11.center_mark:front:body:p:0001" data-role="center_mark"/>
+<line x1="213.568542494924" y1="120" x2="219.568542494924" y2="120" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="216.568542494924" y1="123" x2="216.568542494924" y2="117" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="195.994949366117" y1="77.573593128807" x2="201.994949366117" y2="77.573593128807" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0001:p:0001" data-role="center_mark"/>
+<line x1="198.994949366117" y1="80.573593128807" x2="198.994949366117" y2="74.573593128807" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0001:p:0001" data-role="center_mark"/>
+<line x1="153.568542494924" y1="60" x2="159.568542494924" y2="60" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0002:p:0001" data-role="center_mark"/>
+<line x1="156.568542494924" y1="63" x2="156.568542494924" y2="57" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0002:p:0001" data-role="center_mark"/>
+<line x1="111.142135623731" y1="77.573593128807" x2="117.142135623731" y2="77.573593128807" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0003:p:0001" data-role="center_mark"/>
+<line x1="114.142135623731" y1="80.573593128807" x2="114.142135623731" y2="74.573593128807" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0003:p:0001" data-role="center_mark"/>
+<line x1="93.568542494924" y1="120" x2="99.568542494924" y2="120" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0004:p:0001" data-role="center_mark"/>
+<line x1="96.568542494924" y1="123" x2="96.568542494924" y2="117" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0004:p:0001" data-role="center_mark"/>
+<line x1="111.142135623731" y1="162.426406871193" x2="117.142135623731" y2="162.426406871193" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0005:p:0001" data-role="center_mark"/>
+<line x1="114.142135623731" y1="165.426406871193" x2="114.142135623731" y2="159.426406871193" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0005:p:0001" data-role="center_mark"/>
+<line x1="153.568542494924" y1="180" x2="159.568542494924" y2="180" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0006:p:0001" data-role="center_mark"/>
+<line x1="156.568542494924" y1="183" x2="156.568542494924" y2="177" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0006:p:0001" data-role="center_mark"/>
+<line x1="195.994949366117" y1="162.426406871193" x2="201.994949366117" y2="162.426406871193" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0007:p:0001" data-role="center_mark"/>
+<line x1="198.994949366117" y1="165.426406871193" x2="198.994949366117" y2="159.426406871193" data-drawing-id="phase11.center_mark:front:bolt_pattern:cut:0007:p:0001" data-role="center_mark"/>
+<line x1="153.568542494924" y1="120" x2="159.568542494924" y2="120" data-drawing-id="phase11.center_mark:front:center_hole:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="156.568542494924" y1="123" x2="156.568542494924" y2="117" data-drawing-id="phase11.center_mark:front:center_hole:cut:0000:p:0001" data-role="center_mark"/>
+<line x1="74.568542494924" y1="120" x2="238.568542494924" y2="120" data-drawing-id="phase11.h_centerline:front:body:p:0001" data-role="centerline"/>
+<line x1="207.568542494924" y1="120" x2="225.568542494924" y2="120" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0000:p:0001" data-role="centerline"/>
+<line x1="189.994949366117" y1="77.573593128807" x2="207.994949366117" y2="77.573593128807" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0001:p:0001" data-role="centerline"/>
+<line x1="147.568542494924" y1="60" x2="165.568542494924" y2="60" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0002:p:0001" data-role="centerline"/>
+<line x1="105.142135623731" y1="77.573593128807" x2="123.142135623731" y2="77.573593128807" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0003:p:0001" data-role="centerline"/>
+<line x1="87.568542494924" y1="120" x2="105.568542494924" y2="120" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0004:p:0001" data-role="centerline"/>
+<line x1="105.142135623731" y1="162.426406871193" x2="123.142135623731" y2="162.426406871193" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0005:p:0001" data-role="centerline"/>
+<line x1="147.568542494924" y1="180" x2="165.568542494924" y2="180" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0006:p:0001" data-role="centerline"/>
+<line x1="189.994949366117" y1="162.426406871193" x2="207.994949366117" y2="162.426406871193" data-drawing-id="phase11.h_centerline:front:bolt_pattern:cut:0007:p:0001" data-role="centerline"/>
+<line x1="124.568542494924" y1="120" x2="188.568542494924" y2="120" data-drawing-id="phase11.h_centerline:front:center_hole:cut:0000:p:0001" data-role="centerline"/>
+<line x1="156.568542494924" y1="202" x2="156.568542494924" y2="38" data-drawing-id="phase11.v_centerline:front:body:p:0001" data-role="centerline"/>
+<line x1="216.568542494924" y1="129" x2="216.568542494924" y2="111" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0000:p:0001" data-role="centerline"/>
+<line x1="198.994949366117" y1="86.573593128807" x2="198.994949366117" y2="68.573593128807" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0001:p:0001" data-role="centerline"/>
+<line x1="156.568542494924" y1="69" x2="156.568542494924" y2="51" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0002:p:0001" data-role="centerline"/>
+<line x1="114.142135623731" y1="86.573593128807" x2="114.142135623731" y2="68.573593128807" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0003:p:0001" data-role="centerline"/>
+<line x1="96.568542494924" y1="129" x2="96.568542494924" y2="111" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0004:p:0001" data-role="centerline"/>
+<line x1="114.142135623731" y1="171.426406871193" x2="114.142135623731" y2="153.426406871193" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0005:p:0001" data-role="centerline"/>
+<line x1="156.568542494924" y1="189" x2="156.568542494924" y2="171" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0006:p:0001" data-role="centerline"/>
+<line x1="198.994949366117" y1="171.426406871193" x2="198.994949366117" y2="153.426406871193" data-drawing-id="phase11.v_centerline:front:bolt_pattern:cut:0007:p:0001" data-role="centerline"/>
+<line x1="156.568542494924" y1="152" x2="156.568542494924" y2="88" data-drawing-id="phase11.v_centerline:front:center_hole:cut:0000:p:0001" data-role="centerline"/>
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="135.355339059327" y1="141.213203435596" x2="177.78174593052" y2="98.786796564404" stroke-width="0.25"/>
+<polygon id="a_ethree_view.hole_diameter_center_hole" points="135.355339059327,141.213203435596 132.880465325174,142.273863607376 134.294678887548,143.688077169749" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.hole_diameter_center_hole" points="177.78174593052,98.786796564404 180.256619664673,97.726136392624 178.8424061023,96.311922830251" fill="black" stroke="none"/>
+<text id="t_ethree_view.hole_diameter_center_hole" x="178.8424061023" y="97.726136392624" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">Ø60 THRU</text>
+<line x1="10" y1="286.568542494924" x2="123.137084989848" y2="173.431457505076" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_diameter" points="10,286.568542494924 7.525126265847,287.629202666704 8.93933982822,289.043416229077" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_diameter" points="123.137084989848,173.431457505076 125.611958724001,172.370797333296 124.197745161627,170.956583770923" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_diameter" x="124.197745161627" y="172.370797333296" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">Ø160</text>
+<line x1="221.51828996323" y1="115.050252531694" x2="229.51828996323" y2="107.050252531694" stroke-width="0.25"/>
+<text id="t_ethree_view.pattern_bolt_pattern" x="231.01828996323" y="107.050252531694" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">8× Ø14 THRU PCD Ø120</text>
+</g>
+</g>
+<g id="view_left">
+<g id="left_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_eleft_body_p_0000" data-drawing-id="left:body:p:0000" x1="46.568542494924" y1="200" x2="66.568542494924" y2="200"/>
+<line id="p_eleft_body_p_0001" data-drawing-id="left:body:p:0001" x1="66.568542494924" y1="200" x2="66.568542494924" y2="40"/>
+<line id="p_eleft_body_p_0002" data-drawing-id="left:body:p:0002" x1="66.568542494924" y1="40" x2="46.568542494924" y2="40"/>
+<line id="p_eleft_body_p_0003" data-drawing-id="left:body:p:0003" x1="46.568542494924" y1="40" x2="46.568542494924" y2="200"/>
+</g>
+<g id="left_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_eleft_bolt_pattern_cut_0000_p_0002" data-drawing-id="left:bolt_pattern:cut:0000:p:0002" x1="46.568542494924" y1="127" x2="66.568542494924" y2="127"/>
+<line id="p_eleft_bolt_pattern_cut_0000_p_0003" data-drawing-id="left:bolt_pattern:cut:0000:p:0003" x1="46.568542494924" y1="113" x2="66.568542494924" y2="113"/>
+<line id="p_eleft_bolt_pattern_cut_0001_p_0002" data-drawing-id="left:bolt_pattern:cut:0001:p:0002" x1="46.568542494924" y1="84.573593128807" x2="66.568542494924" y2="84.573593128807"/>
+<line id="p_eleft_bolt_pattern_cut_0001_p_0003" data-drawing-id="left:bolt_pattern:cut:0001:p:0003" x1="46.568542494924" y1="70.573593128807" x2="66.568542494924" y2="70.573593128807"/>
+<line id="p_eleft_bolt_pattern_cut_0002_p_0002" data-drawing-id="left:bolt_pattern:cut:0002:p:0002" x1="46.568542494924" y1="67" x2="66.568542494924" y2="67"/>
+<line id="p_eleft_bolt_pattern_cut_0002_p_0003" data-drawing-id="left:bolt_pattern:cut:0002:p:0003" x1="46.568542494924" y1="53" x2="66.568542494924" y2="53"/>
+<line id="p_eleft_bolt_pattern_cut_0003_p_0002" data-drawing-id="left:bolt_pattern:cut:0003:p:0002" x1="46.568542494924" y1="84.573593128807" x2="66.568542494924" y2="84.573593128807"/>
+<line id="p_eleft_bolt_pattern_cut_0003_p_0003" data-drawing-id="left:bolt_pattern:cut:0003:p:0003" x1="46.568542494924" y1="70.573593128807" x2="66.568542494924" y2="70.573593128807"/>
+<line id="p_eleft_bolt_pattern_cut_0004_p_0002" data-drawing-id="left:bolt_pattern:cut:0004:p:0002" x1="46.568542494924" y1="127" x2="66.568542494924" y2="127"/>
+<line id="p_eleft_bolt_pattern_cut_0004_p_0003" data-drawing-id="left:bolt_pattern:cut:0004:p:0003" x1="46.568542494924" y1="113" x2="66.568542494924" y2="113"/>
+<line id="p_eleft_bolt_pattern_cut_0005_p_0002" data-drawing-id="left:bolt_pattern:cut:0005:p:0002" x1="46.568542494924" y1="169.426406871193" x2="66.568542494924" y2="169.426406871193"/>
+<line id="p_eleft_bolt_pattern_cut_0005_p_0003" data-drawing-id="left:bolt_pattern:cut:0005:p:0003" x1="46.568542494924" y1="155.426406871193" x2="66.568542494924" y2="155.426406871193"/>
+<line id="p_eleft_bolt_pattern_cut_0006_p_0002" data-drawing-id="left:bolt_pattern:cut:0006:p:0002" x1="46.568542494924" y1="187" x2="66.568542494924" y2="187"/>
+<line id="p_eleft_bolt_pattern_cut_0006_p_0003" data-drawing-id="left:bolt_pattern:cut:0006:p:0003" x1="46.568542494924" y1="173" x2="66.568542494924" y2="173"/>
+<line id="p_eleft_bolt_pattern_cut_0007_p_0002" data-drawing-id="left:bolt_pattern:cut:0007:p:0002" x1="46.568542494924" y1="169.426406871193" x2="66.568542494924" y2="169.426406871193"/>
+<line id="p_eleft_bolt_pattern_cut_0007_p_0003" data-drawing-id="left:bolt_pattern:cut:0007:p:0003" x1="46.568542494924" y1="155.426406871193" x2="66.568542494924" y2="155.426406871193"/>
+<line id="p_eleft_center_hole_cut_0000_p_0002" data-drawing-id="left:center_hole:cut:0000:p:0002" x1="46.568542494924" y1="150" x2="66.568542494924" y2="150"/>
+<line id="p_eleft_center_hole_cut_0000_p_0003" data-drawing-id="left:center_hole:cut:0000:p:0003" x1="46.568542494924" y1="90" x2="66.568542494924" y2="90"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="46.568542494924" y1="206" x2="46.568542494924" y2="201" stroke-width="0.25"/>
+<line x1="66.568542494924" y1="206" x2="66.568542494924" y2="201" stroke-width="0.25"/>
+<line x1="46.568542494924" y1="208" x2="66.568542494924" y2="208" stroke-width="0.25"/>
+<polygon id="a_ethree_view.thickness" points="46.568542494924,208 44.068542494924,207 44.068542494924,209" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.thickness" points="66.568542494924,208 69.068542494924,209 69.068542494924,207" fill="black" stroke="none"/>
+<text id="t_ethree_view.thickness" x="56.568542494924" y="209.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">20</text>
+</g>
+</g>
+<g id="view_top">
+<g id="top_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_etop_body_p_0000" data-drawing-id="top:body:p:0000" x1="76.568542494924" y1="30" x2="236.568542494924" y2="30"/>
+<line id="p_etop_body_p_0001" data-drawing-id="top:body:p:0001" x1="236.568542494924" y1="30" x2="236.568542494924" y2="10"/>
+<line id="p_etop_body_p_0002" data-drawing-id="top:body:p:0002" x1="236.568542494924" y1="10" x2="76.568542494924" y2="10"/>
+<line id="p_etop_body_p_0003" data-drawing-id="top:body:p:0003" x1="76.568542494924" y1="10" x2="76.568542494924" y2="30"/>
+</g>
+<g id="top_hidden" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="4 2">
+<line id="p_etop_bolt_pattern_cut_0000_p_0002" data-drawing-id="top:bolt_pattern:cut:0000:p:0002" x1="209.568542494924" y1="10" x2="209.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0000_p_0003" data-drawing-id="top:bolt_pattern:cut:0000:p:0003" x1="223.568542494924" y1="10" x2="223.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0001_p_0002" data-drawing-id="top:bolt_pattern:cut:0001:p:0002" x1="191.994949366117" y1="10" x2="191.994949366117" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0001_p_0003" data-drawing-id="top:bolt_pattern:cut:0001:p:0003" x1="205.994949366117" y1="10" x2="205.994949366117" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0002_p_0002" data-drawing-id="top:bolt_pattern:cut:0002:p:0002" x1="149.568542494924" y1="10" x2="149.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0002_p_0003" data-drawing-id="top:bolt_pattern:cut:0002:p:0003" x1="163.568542494924" y1="10" x2="163.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0003_p_0002" data-drawing-id="top:bolt_pattern:cut:0003:p:0002" x1="107.142135623731" y1="10" x2="107.142135623731" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0003_p_0003" data-drawing-id="top:bolt_pattern:cut:0003:p:0003" x1="121.142135623731" y1="10" x2="121.142135623731" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0004_p_0002" data-drawing-id="top:bolt_pattern:cut:0004:p:0002" x1="89.568542494924" y1="10" x2="89.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0004_p_0003" data-drawing-id="top:bolt_pattern:cut:0004:p:0003" x1="103.568542494924" y1="10" x2="103.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0005_p_0002" data-drawing-id="top:bolt_pattern:cut:0005:p:0002" x1="107.142135623731" y1="10" x2="107.142135623731" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0005_p_0003" data-drawing-id="top:bolt_pattern:cut:0005:p:0003" x1="121.142135623731" y1="10" x2="121.142135623731" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0006_p_0002" data-drawing-id="top:bolt_pattern:cut:0006:p:0002" x1="149.568542494924" y1="10" x2="149.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0006_p_0003" data-drawing-id="top:bolt_pattern:cut:0006:p:0003" x1="163.568542494924" y1="10" x2="163.568542494924" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0007_p_0002" data-drawing-id="top:bolt_pattern:cut:0007:p:0002" x1="191.994949366117" y1="10" x2="191.994949366117" y2="30"/>
+<line id="p_etop_bolt_pattern_cut_0007_p_0003" data-drawing-id="top:bolt_pattern:cut:0007:p:0003" x1="205.994949366117" y1="10" x2="205.994949366117" y2="30"/>
+<line id="p_etop_center_hole_cut_0000_p_0002" data-drawing-id="top:center_hole:cut:0000:p:0002" x1="126.568542494924" y1="10" x2="126.568542494924" y2="30"/>
+<line id="p_etop_center_hole_cut_0000_p_0003" data-drawing-id="top:center_hole:cut:0000:p:0003" x1="186.568542494924" y1="10" x2="186.568542494924" y2="30"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+</g>
+</g>
+<g id="annotations" fill="black" font-family="sans-serif">
+<text id="t_epart_title" x="10" y="291.568542494924" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">phase121_flange</text>
+</g>
+</svg>

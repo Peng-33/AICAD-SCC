@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "flange_outer", "kind": "circle" },
+    { "id": "center_bore", "kind": "circle" },
+    { "id": "locating_boss", "kind": "circle" },
+    { "id": "bolt_hole", "kind": "circle" }
+  ],
+  "relations": [
+    { "kind": "centered_in", "subject": "center_bore", "reference": "flange_outer", "axis": "both" },
+    { "kind": "centered_in", "subject": "locating_boss", "reference": "flange_outer", "axis": "both" }
+  ],
+  "dimensions": [
+    { "target": "flange_outer", "kind": "diameter", "value": 160 },
+    { "target": "center_bore", "kind": "diameter", "value": 60 },
+    { "target": "locating_boss", "kind": "diameter", "value": 90 },
+    { "target": "bolt_hole", "kind": "diameter", "value": 14 }
+  ],
+  "arrays": [
+    { "id": "bolt_pattern", "kind": "circular", "count": 6, "radius": 60, "element": "bolt_hole" }
+  ],
+  "anchors": [
+    { "id": "flange_center", "kind": "fixed_center", "entity": "flange_outer" },
+    { "id": "bolt_seed_center", "kind": "fixed_center", "entity": "bolt_hole" }
+  ],
+  "metadata": {
+    "name": "Circular six-hole flange",
+    "representation": "2D top view",
+    "modeled_requirements": [
+      "Maximum outside diameter Ø160 mm",
+      "Center bore diameter Ø60 mm",
+      "Locating boss outside diameter Ø90 mm",
+      "Six Ø14 mm bolt-hole outlines on Ø120 mm pitch-circle diameter",
+      "Bolt holes equally spaced by 60 degrees"
+    ],
+    "unmodeled_requirements": [
+      "Body thickness 18 mm",
+      "Locating boss height 6 mm",
+      "Center bore and bolt holes are through cuts",
+      "Center-bore chamfers C1 × 45°",
+      "Outside and unspecified chamfers C0.5 × 45°",
+      "Unspecified fillets R0.5 mm",
+      "Dimensional tolerances and Ø60 H7 fit",
+      "Datum A center axis and datum B mounting face",
+      "Coaxiality, perpendicularity, flatness, and positional GD&T controls",
+      "Ra1.6, Ra3.2, and Ra6.3 surface-finish requirements",
+      "A-A full section, centerlines, dimensions, hatching, and 1:1 drawing layout"
+    ],
+    "manufacturing_specification": {
+      "axial_dimensions_mm": {
+        "body_thickness": 18,
+        "boss_height": 6
+      },
+      "pitch_circle_diameter_mm": 120,
+      "tolerances_mm": {
+        "outside_diameter": 0.10,
+        "body_thickness": 0.05,
+        "boss_diameter": 0.05,
+        "boss_height": 0.03,
+        "bolt_hole_diameter": 0.10
+      },
+      "datums": {
+        "A": "Ø60 center-bore axis",
+        "B": "bottom mounting face"
+      },
+      "surface_roughness_ra": {
+        "center_bore": 1.6,
+        "boss_outer": 3.2,
+        "boss_face": 3.2,
+        "bottom_mounting_face": 3.2,
+        "other_machined_surfaces": 6.3
+      }
+    }
+  }
+}

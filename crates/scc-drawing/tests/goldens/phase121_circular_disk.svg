@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278.568542494924 276.568542494924" width="278.568542494924mm" height="276.568542494924mm">
+<g id="view_front">
+<g id="front_objects" fill="none" stroke="black" stroke-width="0.5">
+<circle id="p_efront_body_p_0001" data-drawing-id="front:body:p:0001" cx="186.568542494924" cy="120" r="80"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+<line x1="183.568542494924" y1="120" x2="189.568542494924" y2="120" data-drawing-id="phase11.center_mark:front:body:p:0001" data-role="center_mark"/>
+<line x1="186.568542494924" y1="123" x2="186.568542494924" y2="117" data-drawing-id="phase11.center_mark:front:body:p:0001" data-role="center_mark"/>
+<line x1="104.568542494924" y1="120" x2="268.568542494924" y2="120" data-drawing-id="phase11.h_centerline:front:body:p:0001" data-role="centerline"/>
+<line x1="186.568542494924" y1="202" x2="186.568542494924" y2="38" data-drawing-id="phase11.v_centerline:front:body:p:0001" data-role="centerline"/>
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="10" y1="266.568542494924" x2="123.137084989848" y2="153.431457505076" stroke-width="0.25"/>
+<polygon id="a_ethree_view.overall_diameter" points="10,266.568542494924 7.525126265847,267.629202666704 8.93933982822,269.043416229077" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.overall_diameter" points="123.137084989848,153.431457505076 125.611958724001,152.370797333296 124.197745161627,150.956583770923" fill="black" stroke="none"/>
+<text id="t_ethree_view.overall_diameter" x="124.197745161627" y="152.370797333296" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">Ø160</text>
+</g>
+</g>
+<g id="view_left">
+<g id="left_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_eleft_body_p_0000" data-drawing-id="left:body:p:0000" x1="76.568542494924" y1="200" x2="96.568542494924" y2="200"/>
+<line id="p_eleft_body_p_0001" data-drawing-id="left:body:p:0001" x1="96.568542494924" y1="200" x2="96.568542494924" y2="40"/>
+<line id="p_eleft_body_p_0002" data-drawing-id="left:body:p:0002" x1="96.568542494924" y1="40" x2="76.568542494924" y2="40"/>
+<line id="p_eleft_body_p_0003" data-drawing-id="left:body:p:0003" x1="76.568542494924" y1="40" x2="76.568542494924" y2="200"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+<line x1="76.568542494924" y1="206" x2="76.568542494924" y2="201" stroke-width="0.25"/>
+<line x1="96.568542494924" y1="206" x2="96.568542494924" y2="201" stroke-width="0.25"/>
+<line x1="76.568542494924" y1="208" x2="96.568542494924" y2="208" stroke-width="0.25"/>
+<polygon id="a_ethree_view.thickness" points="76.568542494924,208 74.068542494924,207 74.068542494924,209" fill="black" stroke="none"/>
+<polygon id="a_ethree_view.thickness" points="96.568542494924,208 99.068542494924,209 99.068542494924,207" fill="black" stroke="none"/>
+<text id="t_ethree_view.thickness" x="86.568542494924" y="209.5" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="middle">20</text>
+</g>
+</g>
+<g id="view_top">
+<g id="top_objects" fill="none" stroke="black" stroke-width="0.5">
+<line id="p_etop_body_p_0000" data-drawing-id="top:body:p:0000" x1="106.568542494924" y1="30" x2="266.568542494924" y2="30"/>
+<line id="p_etop_body_p_0001" data-drawing-id="top:body:p:0001" x1="266.568542494924" y1="30" x2="266.568542494924" y2="10"/>
+<line id="p_etop_body_p_0002" data-drawing-id="top:body:p:0002" x1="266.568542494924" y1="10" x2="106.568542494924" y2="10"/>
+<line id="p_etop_body_p_0003" data-drawing-id="top:body:p:0003" x1="106.568542494924" y1="10" x2="106.568542494924" y2="30"/>
+</g>
+<g id="centers" fill="none" stroke="black" stroke-width="0.25" stroke-dasharray="8 2 2 2">
+</g>
+<g id="dimensions" fill="none" stroke="black">
+</g>
+</g>
+<g id="annotations" fill="black" font-family="sans-serif">
+<text id="t_epart_title" x="10" y="271.568542494924" font-family="sans-serif" font-size="3.5" fill="black" stroke="none" text-anchor="start">phase121_flange</text>
+</g>
+</svg>

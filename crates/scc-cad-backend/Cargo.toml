@@ -1,0 +1,14 @@
+[package]
+name = "scc-cad-backend"
+version = "0.4.0-alpha.1"
+license = "Apache-2.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+scc-manufacturing = { path = "../scc-manufacturing" }
+scc-spatial = { path = "../scc-spatial" }
+tempfile = "3"
+thiserror = "1"

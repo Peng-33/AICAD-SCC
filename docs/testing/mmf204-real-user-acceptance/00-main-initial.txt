@@ -1,0 +1,143 @@
+Skip to design canvas
+SCC
+Design workspace
+PROJECT
+Untitled design
+Workspace mode
+2D SCC
+3D CAD
+Run pipeline
+⌘↵
+User
+Debug
+EN
+中文
+01
+Intent
+Awaiting input
+02
+M1 Compile
+Not started
+03
+M2 Execute
+Not started
+04
+M3 Solve
+Not started
+Ready
+scc 0.3.0
+Intent
+Project
+
+CONVERSATION
+
+Design intent
+0
+↗
+Describe the model you need
+
+Use natural language, attach a specification, or start from a verified template.
+
+CONTEXT
+
+Documents
+Add
+
+No reference documents
+
+Geometry
+Constraint graph
+Execution trace
+Nothing selected − 100% + 
+
+DETERMINISTIC WORKSPACE
+
+Turn intent into inspectable geometry.
+
+Choose a verified template or edit a Proposal, then run the M1 → M2 → M3 pipeline.
+
+Choose a template
+ENTITIES
+—
+CONSTRAINTS
+—
+DOF
+—
+CONVERGENCE
+—
+Design instruction
+No documents
+Shift+Enter for new line
+Inspect
+Proposal
+Runtime
+
+SELECTION
+
+Properties
+None
+No object selected
+
+Select an entity, constraint, trace event, or geometry primitive.
+
+OVERLAY
+
+Mutation builder
+0
+Operation
+Update parameter
+Suppress constraint
+Unsuppress constraint
+Change authority
+Target ID
+Parameter
+Value
+Add mutation
+
+No runtime mutations
+
+SVG
+DXF
+
+SEMANTIC CONSTRAINT COMPILER
+
+A precise workspace for design intent.
+
+Compile structured intent, inspect every deterministic stage, and export solved geometry without hiding the reasoning path.
+
+M1
+Semantic compile
+M2
+State execution
+M3
+Geometry solve
+
+START A PROJECT
+
+Choose your working mode
+Project name
+Role
+Designer
+Geometry and intent first
+CAD engineer
+Constraints and mutations
+Developer
+Raw pipeline inspection
+
+RECENT FILES
+
+Current project will appear here after its first save.
+
+QUICK START
+
+Triangular profile
+A fully constrained polygon with an editable mutation patch.
+Six-hole flange top view
+Concentric Ø160/Ø90/Ø60 circles and six Ø14 holes on a Ø120 PCD; unsupported manufacturing requirements remain metadata.
+Linear point array
+Three deterministic array instances spaced along the x axis.
+Centered plate
+Rectangle and circle geometry driven by anchors and center constraints.
+Conflict review
+A proposal that opens the human-readable conflict workflow.
+Start with a blank Proposal

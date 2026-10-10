@@ -1,0 +1,83 @@
+{
+  "id": "cad-export-validation",
+  "name": {
+    "zh-CN": "CAD 导出与质量检查；语义拓扑角色及来源诊断",
+    "en": "CAD Export Validation; Semantic Topology Provenance"
+  },
+  "description": "Independently inspect actual SVG/DXF output from one validated DrawingModel and formal STEP output after re-import/equivalence, including orthographic and section evidence, countersink cones, explicit pattern instances, units, dimensions, and model identity. and planar fixed-section Sweep geometry using STEP re-import, analytic surface signatures, independent bounds/mass, and path/profile material witnesses. For Loft STEP, require the canonical manufacturing path, re-import, equivalence and material probes at each declared section station. Compare SVG and DXF independently and record the sampling and STEP tolerances. G7C: reference generated topology only within fixed-binormal planar Line/Arc Sweeps and aligned ruled Lofts; Hole uses caps only, while Fillet/Chamfer uses an explicit intersection of generated face roles. Preserve source Feature, role, and Sketch entity/adjacent ordered-section IDs; never persist OCP Face/Edge ordinals. Re-resolve with tolerances after rebuild and fail closed on zero or multiple matches.",
+  "version": "1.7.2",
+  "trigger": [
+    "a formal drawing export is produced"
+  ],
+  "input_contract": [
+    "formal_svg",
+    "formal_dxf",
+    "drawing_report",
+    "model_fingerprint"
+  ],
+  "required_context": [
+    "formal_svg",
+    "formal_dxf",
+    "drawing_model_report",
+    "model_fingerprint"
+  ],
+  "allowed_tools": [
+    "drawing.export.svg",
+    "drawing.export.dxf"
+  ],
+  "execution_steps": [
+    "Check SVG root and distinct formal view groups",
+    "Check DXF HEADER millimeter units and nonempty ENTITIES section",
+    "Check both artifacts share the formal DrawingModel report and current model fingerprint",
+    "Check that Front, Top, and Left exports were generated from the same current rebuilt EngineeringModel fingerprint",
+    "Confirm Front, Top, and Left reflect the same final treated-body fingerprint, including valid derived ellipse or cone evidence when returned by OCP.",
+    "For revolved output, check axial circles, stepped side contours, and any bounded approximation tolerance reported by formal HLR evidence; compare SVG and DXF independently against the same current DrawingModel.",
+    "For Section A-A, independently verify the SVG section_aa view and material hatch group, and verify DXF millimetre units, section label, and AICAD_HATCH entities when hatching is present.",
+    "Check section boundary-loop count, sampled chord tolerance, and section provenance against the DrawingModel report; do not substitute a model response or preview for the exported files.",
+    "For each resolved associative dimension, compare formal DrawingModel value/reference/layout with actual SVG and DXF visual output.",
+    "Report DXF_VISUAL_ANNOTATION separately from DXF_NATIVE_DIMENSION; inspect actual DXF entity types and never call TEXT/LINE output a native DIMENSION.",
+    "Confirm each artifact corresponds to the same current rebuild digest and DrawingModel.",
+    "For Countersink STEP evidence, independently inspect re-imported conical surface angle, mouth/main radii, axis, location, and material-removal witness against EngineeringModel values.",
+    "For ExplicitPlacementPattern, compare re-imported cut axes/centres and count to each declared local U/V placement transformed through the typed reference plane.",
+    "For Sweep STEP evidence, compare re-imported analytic curved-edge/surface signatures and material probes derived from profile points at declared Path stations against the validated source; retain existing tolerances and fail closed if witnesses differ.",
+    "Confirm the formal STEP section witnesses correspond to each ordered Sketch and no Drawing runtime Shape bypasses the canonical exporter.",
+    "For a generated Sweep/Loft reference, capture the source Feature, semantic face role, Sketch entity identity, or adjacent ordered Loft section pair from the EngineeringModel."
+  ],
+  "validation_gates": [
+    "SVG and DXF receive independent results",
+    "DXF geometry is not inferred from SVG appearance",
+    "Do not mark exports as validated when any required artifact check fails",
+    "Do not infer Hole geometry or pattern completion from SVG/DXF file presence alone",
+    "Do not infer Fillet/Chamfer success from a model reply or export file alone; require the validated final Feature History and DrawingModel evidence.",
+    "Do not infer successful Revolve geometry from projected appearance alone; require a valid final B-Rep rebuild and matching formal view/export evidence.",
+    "A section hatch export is valid only when it comes from typed Section A-A material geometry and remains in bounds in the target format.",
+    "SVG and DXF are checked independently; matching view names do not prove their geometry or annotations match.",
+    "SVG/DXF visual markup is not proof of native DXF DIMENSION support.",
+    "The current visual-only DXF exporter remains DXF_NATIVE_DIMENSION=DEFERRED until a real DIMENSION entity and its measurements/style are parsed and verified.",
+    "STEP file existence or nonzero size is insufficient; Countersink and every ExplicitPlacementPattern instance require re-imported geometric evidence and equivalence.",
+    "Drawing geometry does not prove that a countersink angle/diameter annotation is present.",
+    "A Sweep STEP is valid only after canonical formal manufacturing, one-solid checks, re-import, equivalence, and EngineeringModel-derived path/profile witnesses; do not use Drawing runtime geometry as the STEP source.",
+    "Any Loft claim requires actual ordered section references and the validated current EngineeringModel rebuild; never infer unsupported topology or hidden section size.",
+    "Generated face and edge roles re-resolve against current source geometry with explicit tolerances; zero or multiple matches fail closed, with no persisted OCP ordinals."
+  ],
+  "failure_policy": [
+    "Return per-format failure evidence",
+    "Keep downloads disabled for an invalid current artifact",
+    "Never substitute a preview image for a CAD export",
+    "On stale, missing, ambiguous, or unsupported topology, preserve the original error code and stop; never retarget by face/edge order.",
+    "G7C：在固定 binormal 的平面 Line/Arc Sweep 与 aligned ruled Loft 范围内引用生成拓扑；Hole 仅使用端盖，Fillet/Chamfer 使用明确的生成面交线。所有引用保留来源 Feature、角色及草图实体/相邻有序截面 ID，不保存 OCP Face/Edge 编号；上游重建后按公差重解析，零匹配或多匹配必须失败关闭。"
+  ],
+  "output_contract": [
+    "SVG_EXPORT",
+    "DXF_EXPORT",
+    "DRAWING_CONSISTENCY",
+    "GEOMETRY_VALIDATION",
+    "SECTION_A_A_EXPORT",
+    "SECTION_HATCH_EXPORT",
+    "SECTION_PROVENANCE",
+    "SVG_ASSOCIATIVE_ANNOTATIONS",
+    "DXF_VISUAL_ANNOTATION",
+    "DXF_NATIVE_DIMENSION",
+    "semantic_topology_provenance_and_resolution_status"
+  ]
+}

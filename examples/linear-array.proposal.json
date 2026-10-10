@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "seed", "kind": "point" }
+  ],
+  "relations": [],
+  "dimensions": [],
+  "arrays": [
+    { "id": "points", "kind": "linear", "count": 3, "spacing": 5, "element": "seed", "direction": "x" }
+  ],
+  "anchors": [
+    { "id": "seed_anchor", "kind": "fixed_center", "entity": "seed" }
+  ],
+  "metadata": {}
+}

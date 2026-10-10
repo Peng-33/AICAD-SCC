@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "entities": [
+    { "id": "base", "kind": "point" },
+    { "id": "tip", "kind": "point" }
+  ],
+  "relations": [
+    { "kind": "distance", "subject": "tip", "reference": "base", "value": 25 }
+  ],
+  "dimensions": [],
+  "arrays": [],
+  "anchors": [
+    { "id": "base_anchor", "kind": "fixed_center", "entity": "base" }
+  ],
+  "metadata": {
+    "name": "M3 anchored point distance"
+  }
+}
