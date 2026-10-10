@@ -4,6 +4,7 @@
 examples/*.ir.json
 examples/*.trace.json
 examples/*.state.json
+!examples/fixed-circle.state.json
 examples/*.dxf
 examples/*.svg
 examples/*.conflict.json

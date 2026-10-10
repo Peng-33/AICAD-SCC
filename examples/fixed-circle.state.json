@@ -1,0 +1,26 @@
+{
+  "root": 1,
+  "step": 2,
+  "entities": {
+    "circle": {
+      "id": "circle",
+      "kind": "Circle",
+      "parameters": {
+        "diameter": {
+          "Numeric": 10.0
+        }
+      }
+    }
+  },
+  "constraints": {
+    "fixed": {
+      "id": "fixed",
+      "kind": "Fixed",
+      "source": "circle",
+      "target": "circle",
+      "authority": "L0",
+      "state": "Active",
+      "parameters": {}
+    }
+  }
+}
