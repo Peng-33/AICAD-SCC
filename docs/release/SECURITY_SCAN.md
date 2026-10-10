@@ -49,7 +49,7 @@ email, private-key, and key-id markers.
 - CadQuery 2.8.0 and cadquery-ocp 7.9.3.1.1 license files and the wheel SBOM were opened after this note was first written. The result is in `THIRD_PARTY_NOTICES.md`. The wheel does not contain an OCCT license text. That blocks image redistribution. It does not block publishing AICAD source, which does not vendor those binaries.
 - A pre-commit scan of 557 text files found no private-key block, AWS-style key id, GitHub token prefix, Slack token prefix, long `sk-` token, host home-directory prefix, or personal mailbox marker.
 - `strings` on the staged PNG files found none of those markers. This is not an OCR of the pixels.
-- The local commit author is a placeholder. It is not a confirmed legal maintainer, and it is not taken from the private history.
+- Published commits use GitHub account Peng-33 and that account's GitHub noreply address. The earlier localhost placeholder is not part of the published history. No personal mailbox is introduced.
 
 ## Publication gate
 

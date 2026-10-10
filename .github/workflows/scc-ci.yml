@@ -88,7 +88,9 @@ jobs:
       - name: Run UI unit and real-pipeline tests
         env:
           SCC_BIN: ${{ steps.scc-bin.outputs.path }}
-        run: npm test --prefix apps/scc-ui
+        run: |
+          echo "Gated CadQuery tests stay skipped unless AICAD_RUST_PARAMETRIC_INTEGRATION and AICAD_RUST_STEP_INTEGRATION are set. This job does not set them."
+          npm test --prefix apps/scc-ui
 
   test:
     name: Test (${{ matrix.os }})

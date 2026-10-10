@@ -12,7 +12,7 @@
 
 AICAD 是一个面向可描述零件的 alpha CAD 编译器。自然语言只是提出工程模型的一种可选方式，不是几何内核。语言模型不直接写出实体、工程图或 STEP。这些产物来自确定性工程链：类型化模型、约束求解或特征历史重建、正交工程图，以及导出前经过重导入和等价校验的 STEP。
 
-它不是通用商业 CAD 的替代品。支持的几何是有界的，不少操作会故意失败关闭。0.4.0-alpha.1 是开源准备快照。下面的能力描述的是这棵源码树。某一行只有在 [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) 写明该命令已在这棵树上通过时，才能叫做“本快照已验证”。
+它不是通用商业 CAD 的替代品。支持的几何是有界的，不少操作会故意失败关闭。0.4.0-alpha.1 是公开 Alpha。下面的能力描述的是这棵源码树。某一行只有在 [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) 写明该命令已在这棵树上通过时，才能叫做“本快照已验证”。
 
 ## 为什么做 AICAD？
 
@@ -201,7 +201,7 @@ npm start --prefix apps/scc-ui
 - 商业 LLM 供应商是可选的，本快照没有验收它们。配置了密钥就可能产生用量；一次成功的对话补全不是一个有效实体。
 - 这里没有验证第三方 CAD 文件导入，包括 FreeCAD 文档。
 - AICAD 这个名字与无关产品冲突。本快照不是商标清算。
-- 版权持有人尚未确认。见 [NOTICE](NOTICE)。
+- 原创源码使用 Apache-2.0。第三方代码保留各自的许可证。Docker 镜像没有公开发布。见 [NOTICE](NOTICE)。
 
 ## 路线图
 
@@ -215,7 +215,7 @@ npm start --prefix apps/scc-ui
 | CAD 交换 | 经过校验的 STEP 导出 | 按格式逐个确认外部 STEP 和其他内核 | 可信的往返编辑 |
 | LLM 意图 | DSL 和类型化工具，与供应商无关 | 针对具体供应商的验收测试，单独报告 | 不让模型直接发出内核脚本 |
 | 工作台 | 一个工程界面，默认只在本机 | 更清楚的错误，更少的过期缓存意外 | 不做第二套产品界面 |
-| 开源工程质量 | 快照、文档、版本对齐 | 确认后的许可证、`main` 上的公开 CI、私下安全报告 | 可维护的正式版本 |
+| 开源工程质量 | Apache-2.0 源码 Alpha | `main` 上的公开 CI、私下安全报告 | 可维护的正式版本 |
 
 ## 参与贡献
 
@@ -225,6 +225,6 @@ npm start --prefix apps/scc-ui
 
 ## 许可证
 
-拟议许可证是 Apache License 2.0。正文在 [LICENSE](LICENSE)。[NOTICE](NOTICE) 和 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 说明这个选择目前还不代表什么。
+AICAD / SCC 原创源码使用 Apache License 2.0。正文在 [LICENSE](LICENSE)。[NOTICE](NOTICE) 记录所有者的授权。[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 列出其他许可证。
 
-版权持有人没有写上，因为确认仍未完成。没有贡献者协议在生效。第三方组件保留各自的许可证。随 CadQuery/OCP 安装带入的 Open CASCADE Technology 是带 Open CASCADE 例外的 LGPL-2.1；这份 Apache-2.0 意图不能把它重新许可。不要把本地快照当成已经完成的公开发布。
+GitHub 账户 Peng-33 已于 2026-10-10 确认该授权，包括原创源码的商业使用、修改和再分发。没有贡献者协议在生效。第三方组件保留各自的许可证。随 CadQuery/OCP 安装带入的 Open CASCADE Technology 是带 Open CASCADE 例外的 LGPL-2.1；Apache-2.0 不能把它重新许可。这个 Alpha 不是稳定的 1.0，Docker 镜像也没有公开发布。

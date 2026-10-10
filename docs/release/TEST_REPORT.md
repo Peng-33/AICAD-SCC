@@ -1,8 +1,13 @@
 # Test report for 0.4.0-alpha.1
 
-Date: 2026-10-10. Tree: the public-prep snapshot that records the bounded
-G7C Sweep repair. This is not a public release, and it is not a claim that
-every historical acceptance report was re-run.
+Date: 2026-10-10. The tables below were measured on the source that this
+alpha publishes. A publication commit may add license text, release notes,
+and the release-workflow edit without changing Rust, Node, or Python
+sources. Before the tag, fmt, clippy, workspace tests, the release build,
+and the gated Node suite are re-run on that commit. These tables are that
+evidence when the re-run matches them. A mismatch must replace this file
+before the tag. This is not a GitHub Actions result, and it is not a claim
+that every historical acceptance report was re-run.
 
 Ignored tests and skipped tests are not passes. Both gated G7C cases
 passed. That does not widen Sweep or Loft beyond the domains below.

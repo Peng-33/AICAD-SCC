@@ -8,7 +8,8 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
       - 'v[0-9]+.[0-9]+.[0-9]+-*'
 
-# Default to read-only; only the publish job receives write permission.
+# Read-only. This workflow verifies a tag. It does not upload binaries
+# or create the GitHub Release. OCCT redistribution is still blocked.
 permissions:
   contents: read
 
@@ -123,81 +124,5 @@ jobs:
       - name: Build CLI
         run: cargo build --release -p scc-cli
 
-      - name: Package Linux artifact
-        if: runner.os == 'Linux'
-        shell: bash
-        run: |
-          VERSION="${{ needs.verify.outputs.version }}"
-          mkdir -p package
-          cp target/release/scc package/scc
-          cp README.md CHANGELOG.md package/
-          cp Cargo.lock package/
-          {
-            echo "name: scc"
-            echo "version: $VERSION"
-            echo "commit: ${{ github.sha }}"
-            echo "toolchain: $(rustc --version)"
-            echo "platform: ${{ matrix.os }}"
-          } > package/BUILDINFO
-          cargo metadata --format-version 1 --no-deps > package/cargo-metadata.json
-          tar -czf "scc-linux-x86_64-v${VERSION}.tar.gz" -C package .
-          sha256sum "scc-linux-x86_64-v${VERSION}.tar.gz" > "scc-linux-x86_64-v${VERSION}.tar.gz.sha256"
-
-      - name: Package Windows artifact
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          $version = "${{ needs.verify.outputs.version }}"
-          New-Item -ItemType Directory -Path package -Force | Out-Null
-          Copy-Item target/release/scc.exe package/scc.exe
-          Copy-Item README.md,CHANGELOG.md package/
-          Copy-Item Cargo.lock package/
-          @"
-          name: scc
-          version: $version
-          commit: ${{ github.sha }}
-          toolchain: $(rustc --version)
-          platform: ${{ matrix.os }}
-          "@ | Out-File -FilePath package/BUILDINFO -Encoding utf8
-          cargo metadata --format-version 1 --no-deps | Out-File -FilePath package/cargo-metadata.json -Encoding utf8
-          Compress-Archive -Path package/* -DestinationPath "scc-windows-x86_64-v${version}.zip"
-          $hash = Get-FileHash -Path "scc-windows-x86_64-v${version}.zip" -Algorithm SHA256
-          "$($hash.Hash)  scc-windows-x86_64-v${version}.zip" | Out-File -FilePath "scc-windows-x86_64-v${version}.zip.sha256" -Encoding utf8
-
-      # actions/upload-artifact@v4.3.1
-      - name: Upload artifact
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
-        with:
-          name: scc-${{ matrix.os }}
-          path: |
-            scc-*-v*.tar.gz
-            scc-*-v*.zip
-            scc-*-v*.tar.gz.sha256
-            scc-*-v*.zip.sha256
-          if-no-files-found: error
-
-  publish:
-    name: Publish GitHub release
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      # actions/download-artifact@v4.1.4
-      - name: Download release artifacts
-        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427
-        with:
-          path: dist
-          merge-multiple: true
-
-      - name: List artifacts
-        run: ls -la dist/
-
-      # softprops/action-gh-release@v2.0.0
-      - name: Publish release
-        uses: softprops/action-gh-release@738f0c76948a84ff818b6e43c8b515cb27dbc559
-        with:
-          files: dist/*
-          generate_release_notes: true
-          prerelease: ${{ contains(github.ref_name, '-') }}
-          fail_on_unmatched_files: true
+      - name: Do not upload binaries
+        run: echo "v0.4.0-alpha.1 publishes source archives only. CLI and Docker images are not release assets."

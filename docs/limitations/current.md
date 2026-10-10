@@ -49,6 +49,7 @@ mounting-plate fixture and `examples/mounting-plate.dsl` do not call them.
 
 ## Licensing limit
 
-Apache-2.0 is the intended license and is not yet an authorized public grant.
+Original source is Apache-2.0, as recorded in [../../NOTICE](../../NOTICE).
 OCCT inside a CadQuery install stays under LGPL-2.1 plus the Open CASCADE
-exception. See [../../NOTICE](../../NOTICE) and [../../THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+exception. The Docker image is not published. See
+[../../THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).

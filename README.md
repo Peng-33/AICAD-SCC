@@ -12,7 +12,7 @@ From engineering intent to verifiable CAD.
 
 AICAD is an alpha CAD compiler for parts that can be stated as an editable engineering model. Natural language is an optional way to propose that model. It is not the geometry kernel. A language model never writes the solid, the drawing, or the STEP file. Those come from a deterministic pipeline: a typed model, a constraint or feature-history rebuild, orthographic drawings, and a STEP export that is re-imported and checked before the bytes are returned.
 
-This is not a general commercial CAD replacement. The supported geometry is bounded, and several operations fail closed on purpose. Version 0.4.0-alpha.1 is a public-prep snapshot. Claims below are about the source in this tree. A row is "verified in this snapshot" only when [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) says that exact command passed here.
+This is not a general commercial CAD replacement. The supported geometry is bounded, and several operations fail closed on purpose. Version 0.4.0-alpha.1 is a public alpha. Claims below are about the source in this tree. A row is "verified in this snapshot" only when [docs/release/TEST_REPORT.md](docs/release/TEST_REPORT.md) says that exact command passed here.
 
 ## Why AICAD?
 
@@ -201,7 +201,7 @@ Parameters and feature history are the editable record. A STEP file is a checked
 - Commercial LLM providers are optional and were not accepted on this snapshot. A configured key can spend quota; a successful chat completion is not a valid solid.
 - Import of third-party CAD files, including FreeCAD documents, is not verified here.
 - The name AICAD collides with unrelated products. This snapshot is not a trademark clearance.
-- The copyright holder has not been confirmed. See [NOTICE](NOTICE).
+- Original source is Apache-2.0. Third-party code keeps its own license. The Docker image is not published. See [NOTICE](NOTICE).
 
 ## Roadmap
 
@@ -215,7 +215,7 @@ These are directions, not dates. Historical phase numbers live in `docs/adr/` an
 | CAD interchange | Validated STEP out | Confirm foreign STEP and other kernels one format at a time | Trusted round-trip editing |
 | LLM intent | DSL and typed tools, provider-neutral | Acceptance tests against specific providers, reported separately | Nothing that lets a model emit kernel script |
 | Workbench | One engineering UI, local-only by default | Clearer errors and fewer stale-cache surprises | Not a second product UI |
-| Open-source engineering | Snapshot, docs, version alignment | Confirmed license, public CI on `main`, private security reports | Maintained releases |
+| Open-source engineering | Apache-2.0 source alpha | Public CI on `main`, private security reports | Maintained releases |
 
 ## Contributing
 
@@ -225,6 +225,6 @@ Run the Rust workspace tests and `npm test` before a pull request. State the geo
 
 ## License
 
-The intended license is Apache License 2.0. The text is in [LICENSE](LICENSE). [NOTICE](NOTICE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) say what that choice does not yet mean.
+Original AICAD / SCC source is Apache License 2.0. The text is in [LICENSE](LICENSE). [NOTICE](NOTICE) records the owner's grant. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) lists other licenses.
 
-The copyright holder is not named, because that confirmation is still open. No contributor agreement is in force. Third-party components keep their own licenses. Open CASCADE Technology, as shipped inside a CadQuery/OCP install, is LGPL-2.1 with the Open CASCADE exception; this Apache-2.0 intent does not relicense it. Do not treat a local snapshot as a completed public release.
+GitHub account Peng-33 confirmed that grant on 2026-10-10, including commercial use, modification, and redistribution of the original source. No contributor agreement is in force. Third-party components keep their own licenses. Open CASCADE Technology, as shipped inside a CadQuery/OCP install, is LGPL-2.1 with the Open CASCADE exception; Apache-2.0 does not relicense it. This alpha is not a stable 1.0 release, and the Docker image is not published.

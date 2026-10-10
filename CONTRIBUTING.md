@@ -6,9 +6,8 @@ AICAD accepts changes that keep the engineering chain deterministic and
 honest about what was tested. Read [docs/limitations/current.md](docs/limitations/current.md)
 before proposing a feature that the kernel currently rejects.
 
-The intended license is Apache-2.0, but the copyright holder is not yet
-confirmed. Do not contribute if you need a completed legal grant today.
-See [NOTICE](NOTICE).
+Original source in this repository is Apache-2.0. See [LICENSE](LICENSE)
+and [NOTICE](NOTICE). Third-party components keep their own licenses.
 
 ## What to work on
 
@@ -93,7 +92,7 @@ Follow [SECURITY.md](SECURITY.md).
 
 AICAD 接收的改动必须保持工程链确定，并如实说明测试范围。内核目前拒绝的操作，在提案前先阅读 [docs/limitations/current.md](docs/limitations/current.md)。
 
-拟议许可证是 Apache-2.0，版权持有人尚未确认。如果你需要一份已经完成的法律授权，请先不要提交代码。见 [NOTICE](NOTICE)。
+本仓库原创源码使用 Apache-2.0。见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。第三方组件保留各自的许可证。
 
 提交 Issue 时写上 `scc --version`、命令或路由、可复现的最小输入和错误代码。不要附带 API Key 或私人模型。
 

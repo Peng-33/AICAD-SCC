@@ -1,36 +1,31 @@
 AICAD / Semantic Constraint Compiler
-Public-prep snapshot 0.4.0-alpha.1
+Public alpha 0.4.0-alpha.1
 
 This NOTICE is informational. It does not modify the Apache License 2.0
-text in LICENSE, and it does not by itself grant publication rights.
+text in LICENSE.
 
-Intended license
-----------------
-The project owner has selected Apache License 2.0 as the intended license
-for the source in this snapshot. The license text is the official text
-retrieved from https://www.apache.org/licenses/LICENSE-2.0.txt.
+License
+-------
+Original AICAD / SCC source in this repository is released under the
+Apache License 2.0. The license text is the official text retrieved from
+https://www.apache.org/licenses/LICENSE-2.0.txt.
 
 Copyright and publication authority
 -----------------------------------
-No copyright holder is designated in this snapshot. This file does not
-name a person, employer, foundation, or other owner, because that fact
-has not been confirmed. No contributor license agreement, copyright
-assignment, or employer authorization is recorded here.
+On 2026-10-10 the project owner, GitHub account Peng-33, confirmed the
+rights needed to license that original source under Apache-2.0, including
+commercial use, modification, and redistribution. This notice does not
+name an employer, a foundation, or a natural person beyond that account.
+No contributor license agreement is in force. Contributions are accepted
+under the same Apache-2.0 terms in CONTRIBUTING.md.
+
+Third-party components are not relicensed by this grant.
 
 The private baseline copied into this tree is commit
 0568fac256178ab9b344995c1eab91861c292a7d on branch
-migration-backup-2026-10-03. That backup repository stays private.
-Presence of the source on this machine is not evidence of a right to
-license it to the public.
-
-Until the owner confirms both of the following, this tree is a local
-release candidate only:
-
-1. The owner has the rights needed to license the AICAD/SCC source under
-   Apache-2.0.
-2. The owner approves the first publication of a new public repository.
-
-Do not treat LICENSE_AUTHORIZATION as confirmed.
+migration-backup-2026-10-03. The backup repository
+Peng-33/AICAD-w11-backup-20261003 and the existing repository
+Peng-33/AICAD stay private. This public alpha is a separate repository.
 
 Third-party software
 --------------------

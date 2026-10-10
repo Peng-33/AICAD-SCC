@@ -2,7 +2,8 @@
 
 Checked on 2026-10-10 for the local 0.4.0-alpha.1 prep tree. This is an
 inventory of files and metadata that were actually read. It is not a legal
-opinion, and it does not name an AICAD copyright holder.
+opinion. The AICAD grant is in `NOTICE`. This file does not relicense
+the third-party components below.
 
 ## Rust lockfile
 
@@ -14,8 +15,8 @@ The 18 workspace crates are `scc-analysis`, `scc-cad-backend`, `scc-cli`,
 `scc-projection`, `scc-projection-consistency`, `scc-proposal`,
 `scc-spatial`, `scc-tools`, and `scc-visibility`. Each is version
 `0.4.0-alpha.1` with the Cargo `license` field `Apache-2.0`. That field
-records the intended license. Publication authority is still unconfirmed.
-See `NOTICE`.
+matches the Apache-2.0 grant recorded in `NOTICE`. Third-party crates
+below are not covered by that grant.
 
 The other 50 packages are third-party crates. None had an empty license
 field. Counts:

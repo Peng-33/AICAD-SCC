@@ -2,7 +2,7 @@
 
 ## [0.4.0-alpha.1] - 2026-10-10
 
-Public-prep snapshot taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. This entry does not record a public release. Local evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. The gated G7C Sweep and Loft cases pass inside their narrow domains. A sweep hole that consumes the end rim still fails closed.
+Public alpha taken from private baseline `0568fac256178ab9b344995c1eab91861c292a7d`. The original source is Apache-2.0. Evidence is in `docs/release/TEST_REPORT.md`. Historical acceptance reports were not all re-run. The gated G7C Sweep and Loft cases pass inside their narrow domains. A sweep hole that consumes the end rim still fails closed. The Docker image is not part of this release.
 
 ### Changed
 
