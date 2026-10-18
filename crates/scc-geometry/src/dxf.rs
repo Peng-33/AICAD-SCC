@@ -1,7 +1,26 @@
 use std::fmt::Write;
 
-use crate::svg::number;
 use crate::{GeometryError, GeometryModel, GeometryPrimitive, Point2};
+
+// DXF coordinates are serialized at 10 decimal places (0.1 nanometres for mm).
+// This is much finer than the engineering tolerances while avoiding the
+// one-picometre, platform-dependent trig rounding exposed by the 12-place
+// DXF golden fixture on Windows. Keep full f64 precision in the model.
+// SVG retains its existing, independent 12-place presentation formatter.
+pub fn number(value: f64) -> String {
+    let mut rendered = format!("{value:.10}");
+    while rendered.ends_with('0') {
+        rendered.pop();
+    }
+    if rendered.ends_with('.') {
+        rendered.pop();
+    }
+    if rendered == "-0" {
+        "0".into()
+    } else {
+        rendered
+    }
+}
 
 pub(crate) fn render_dxf(model: &GeometryModel) -> Result<String, GeometryError> {
     let mut dxf = String::from(
@@ -169,4 +188,21 @@ pub fn closed_polyline_entity(
         group(output, 20, &number(vertex.y))?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::number;
+
+    #[test]
+    fn dxf_serialization_normalizes_cross_platform_trigonometric_rounding() {
+        assert_eq!(number(134.547727214752), "134.5477272148");
+        assert_eq!(number(134.547727214753), "134.5477272148");
+        assert_eq!(number(45.452272785247), "45.4522727852");
+        assert_eq!(number(45.452272785248), "45.4522727852");
+        assert_eq!(number(-0.0), "0");
+        assert_eq!(number(120.0), "120");
+        // Retain sub-micrometre DXF detail without changing the model.
+        assert_eq!(number(1.0000000123), "1.0000000123");
+    }
 }

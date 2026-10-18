@@ -25,9 +25,9 @@
 //!   characters are stripped defensively; XML escaping is never applied.
 
 use scc_geometry::dxf::{
-    arc_entity, circle_entity, closed_polyline_entity, group, line_entity, point_entity,
+    arc_entity, circle_entity, closed_polyline_entity, group, line_entity, number, point_entity,
 };
-use scc_geometry::{svg::number, Point2};
+use scc_geometry::Point2;
 
 use crate::annotation::DrawingTextAnchor;
 use crate::associative_dimension::{AssociativeDimensionStatus, AssociativeDimensionUnit};
